@@ -1,0 +1,20 @@
+.buttonViewContainer {
+  border-radius: 35px;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  cursor: pointer;
+  user-select: none;
+  border: none;
+}
+.buttonViewContainer:hover {
+  opacity: 0.6;
+}
+.buttonViewContainer:active {
+  opacity: 1;
+  background-color: grey;
+}
+.buttonViewContainer img {
+  width: 25px;
+  height: 25px;
+}

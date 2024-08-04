@@ -1,0 +1,15 @@
+.ButtonPrimary {
+  height: 35px;
+  width: 32px;
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  background-color: #324f5d;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+}
+.ButtonPrimary:hover {
+  opacity: 0.6;
+}

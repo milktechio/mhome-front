@@ -1,0 +1,18 @@
+.modal-display-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-row-gap: 15px;
+  margin-bottom: 20px;
+}
+
+.modal-input-container {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-text-container {
+  margin: auto;
+  font-size: 20px;
+}

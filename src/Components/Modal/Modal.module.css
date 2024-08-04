@@ -1,0 +1,52 @@
+.modalScreen {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgba(156, 156, 156, 0.6);
+}
+
+.modalMain {
+  width: 50%;
+  max-width: 500px;
+  margin: 0px;
+  background-color: white;
+  box-shadow: 5px 5px 15px rgb(12, 12, 12);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: centerF;
+  animation: 0.5s show;
+}
+
+.modalHeader {
+  padding: 10px;
+}
+
+.modalBody {
+  margin-block: 20px;
+}
+
+.buttonContainer {
+  width: 60%;
+  height: 100%;
+  margin-block: 15px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+}
+
+@keyframes show {
+  from {
+    transform: translate(0px, -20vh);
+  }
+  to {
+    transform: translate(0px, 0px);
+  }
+}

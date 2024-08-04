@@ -1,0 +1,82 @@
+.table-container {
+  width: 100%;
+  height: 90%;
+  max-height: 60vh;
+  overflow-y: auto;
+  box-shadow: 0 2px 6px grey;
+  border-radius: 5px;
+  margin: auto;
+  user-select: none;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse; /*Elimina el espacio entre bordes*/
+  border-top: none;
+  border-bottom: none;
+}
+
+table .header {
+  background-color: #324f5d;
+  color: antiquewhite;
+  font-size: 18px;
+}
+
+/* Redondeos de las esquinas de la tabla */
+table th,
+td {
+  padding-block: 5px;
+  padding-inline: 5px;
+  border: solid 0.2px #324f5d;
+}
+
+table thead tr th:first-child {
+  border-top-left-radius: 5px;
+}
+
+table th:first-child,
+table td:first-child {
+  border-left: none;
+}
+
+table th:last-child,
+table td:last-child {
+  border-right: none;
+}
+
+table thead:first-child th {
+  border-top: none; /* Elimina el borde superior del encabezado */
+}
+
+table tbody tr:last-child td {
+  border-bottom: none; /* Elimina el borde inferior de la última fila */
+}
+
+/* Scroll Bar de la Tabla */
+.table-container::-webkit-scrollbar {
+  width: 10px;
+  /* Ancho de la barra de desplazamiento */
+}
+
+/* Estilizar el riel de la barra de desplazamiento */
+.table-container::-webkit-scrollbar-track {
+  opacity: 0.8;
+  background-color: transparent; /* Color de fondo del riel */
+}
+
+/* Estilizar el mango de la barra de desplazamiento */
+.table-container::-webkit-scrollbar-thumb {
+  background: grey; /* Color del mango de la barra */
+  border-radius: 10px; /* Borde redondeado del mango */
+}
+
+/* Cambiar el color del mango cuando se está desplazando */
+.table-container::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Nuevo color del mango al pasar el mouse */
+}
+
+.tools-container {
+  display: flex;
+  justify-content: space-evenly;
+}

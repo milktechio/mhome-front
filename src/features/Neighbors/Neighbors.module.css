@@ -1,0 +1,7 @@
+.inputDisplayContainer {
+  width: 100%;
+  margin: 0px;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}

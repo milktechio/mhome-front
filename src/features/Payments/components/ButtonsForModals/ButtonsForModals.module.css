@@ -1,0 +1,24 @@
+.paymentsInputContainer {
+  width: 100%;
+  margin: 0px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  place-content: end;
+}
+
+.buttonsContainer {
+  width: 60%;
+  margin: 0px 30px 0px 0px;
+  justify-self: end;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 10px;
+}
+
+.inputContainer {
+  width: 100%;
+  margin: 0px;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}

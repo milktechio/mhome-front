@@ -1,0 +1,19 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  margin: auto;
+}
+
+html,
+body {
+  width: 98vw;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

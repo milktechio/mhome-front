@@ -1,0 +1,26 @@
+.layoutPageContainer {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 15% 85%;
+}
+
+.header {
+  width: 90%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.image {
+  width: 150px;
+  margin: 0px;
+}
+
+.pageDisplayContainer {
+  width: 90%;
+  height: 100%;
+  margin: 0px;
+  display: grid;
+  grid-template-rows: 10% 90%;
+  justify-self: center;
+}

@@ -1,0 +1,49 @@
+.sitesListContainer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+}
+
+.sitesListContainer img {
+  width: 25px;
+  height: 25px;
+  margin-block: 5px;
+}
+
+.listContainer {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  font-size: 20px;
+  list-style: none;
+}
+
+.memberlistLink {
+  height: 100%;
+  margin: 0px 0px 0px 15px;
+  display: flex;
+}
+
+.linkStyle {
+  width: 100%;
+  display: grid;
+  text-align: start;
+  padding: 5px 0px 5px 0px;
+  grid-template-columns: 20% 80%;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  color: white;
+}
+
+.linkStyle:hover {
+  background-color: white;
+  color: #324f5d;
+}
+
+.linkText{
+  width: 80%;
+  text-align: start;
+}
