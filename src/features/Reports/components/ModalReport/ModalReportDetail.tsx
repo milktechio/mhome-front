@@ -1,4 +1,4 @@
-import Modal from "../../../../Components/Modal/screen/Modal";
+import Modal from "../../../../Components/Modal/Modal";
 import "./ModalReport.css";
 
 type TableDataType = {
@@ -15,7 +15,7 @@ type TableDataType = {
 type ModalReportType = {
   isOpen: string;
   reportData?: TableDataType | undefined;
-  closeHandler?: React.MouseEventHandler<HTMLDivElement> | undefined;
+  closeHandler?: React.MouseEventHandler<HTMLButtonElement> | undefined;
 };
 
 const ModalReportDetail = ({

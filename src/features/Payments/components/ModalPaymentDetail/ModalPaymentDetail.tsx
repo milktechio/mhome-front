@@ -1,4 +1,4 @@
-import Modal from "../../../../Components/Modal/screen/Modal";
+import Modal from "../../../../Components/Modal/Modal";
 
 type TableDataType = {
   Id?: number;
@@ -14,7 +14,7 @@ type TableDataType = {
 type ModalReportType = {
   isOpen: string;
   paymentData?: TableDataType | undefined;
-  closeHandler?: React.MouseEventHandler<HTMLDivElement> | undefined;
+  closeHandler?: React.MouseEventHandler<HTMLButtonElement> | undefined;
 };
 
 const ModalPaymentDetail = ({
