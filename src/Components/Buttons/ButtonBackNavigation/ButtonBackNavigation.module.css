@@ -1,0 +1,21 @@
+.backNavContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  box-shadow: 2px 2px 2px rgb(234, 234, 234);
+  border: 1px solid rgb(170, 170, 170);
+  border-radius: 5px;
+  padding: 2px;
+  position: fixed;
+  left: 10px;
+}
+
+.backNavContainer:active {
+  opacity: 0.5;
+}
+
+.backNavContainerImage {
+  width: 15px;
+  height: 15px;
+}

@@ -22,3 +22,10 @@
   justify-content: end;
   align-items: end;
 }
+
+@media (max-width: 768px) {
+  .paymentsInputContainer {
+    visibility: hidden;
+    height: 0px;
+  }
+}

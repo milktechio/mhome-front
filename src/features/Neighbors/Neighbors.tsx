@@ -13,7 +13,12 @@ const Neighbors = (): ReturnType<FC> => {
       <div className={styles.inputDisplayContainer}>
         <InputSearch placeholderText="Buscar" />
       </div>
-      {screen.width < 768 && <ListDataMobile tableData={Data} />}
+      {screen.width < 768 && (
+        <ListDataMobile
+          headers={["Casa", "Nombre", "email"]}
+          tableData={Data}
+        />
+      )}
       {screen.width > 768 && (
         <Table
           headers={["Casa", "Nombre", "Correo", "Telefono", "Herramientas"]}

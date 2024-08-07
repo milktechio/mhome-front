@@ -1,20 +1,22 @@
+import { TableDataType } from "../../../../utils/types/tableData.types";
 import styles from "./ListItem.module.css";
-import { textTruncateHandler } from "../../../../utils/handlers/textTruncate";
 
 const ListItem = ({
-  Casa,
-  email,
-  Nombre,
+  headers,
+  data,
 }: {
-  Casa: number | undefined;
-  email: string | undefined;
-  Nombre: string | undefined;
+  headers: string[];
+  data: TableDataType;
 }) => {
   return (
     <div className={styles.listMobileItem}>
-      <p>Casa: {Casa}</p>
-      <p>Email: {textTruncateHandler(email, 15)}</p>
-      <p>Nombre: {Nombre}</p>
+      {headers.map((header, i) => {
+        return (
+          <div key={`list-item-${i}`}>
+            {header}: {String(data[header]).substring(0, 18)}
+          </div>
+        );
+      })}
     </div>
   );
 };

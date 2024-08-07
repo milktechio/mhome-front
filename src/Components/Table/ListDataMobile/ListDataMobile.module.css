@@ -1,6 +1,7 @@
 .listMobileContainer {
   height: 100%;
-  margin-block: 55px;
+  width: 90%;
+  margin-block: 43px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,4 +11,5 @@
 
 .listMobileMain {
   height: 100%;
+  width: 100%;
 }
