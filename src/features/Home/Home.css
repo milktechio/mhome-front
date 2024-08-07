@@ -45,15 +45,33 @@
   color: antiquewhite;
 }
 
-.cash-display-container .title{
-    width: 90%;
-    text-align: start;
+.cash-display-container .title {
+  width: 90%;
+  text-align: start;
 }
 
-.cash-display-container .amount{
-    width: 90%;
-    height: 50%;
-    text-align: center;
-    font-size: 40px;
+.cash-display-container .amount {
+  width: 90%;
+  height: 50%;
+  text-align: center;
+  font-size: 40px;
 }
 
+@media (max-width: 768px) {
+  .home-styles-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .notifications-container {
+    flex-direction: column;
+    width: 90%;
+    gap: 10px;
+    margin: 0px;
+  }
+
+  .notifications {
+    width: 100%;
+    padding: 0px;
+  }
+}

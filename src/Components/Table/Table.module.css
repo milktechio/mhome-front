@@ -1,4 +1,4 @@
-.table-container {
+.tableContainer {
   width: 100%;
   height: 90%;
   max-height: 60vh;
@@ -9,7 +9,7 @@
   user-select: none;
 }
 
-table {
+.tableMain {
   width: 100%;
   text-align: center;
   border-collapse: collapse; /*Elimina el espacio entre bordes*/
@@ -17,7 +17,7 @@ table {
   border-bottom: none;
 }
 
-table .header {
+.tableHeader {
   background-color: #324f5d;
   color: antiquewhite;
   font-size: 18px;

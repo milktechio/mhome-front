@@ -1,7 +1,7 @@
+import React, { FC } from "react";
 import LoginImageArea from "./components/LoginImageArea/LoginImageArea";
 import LoginLayOut from "./components/LoginLayOut/LoginLayOut";
 import LoginInputArea from "./components/LoginInputArea/LoginInputArea";
-import React, { FC } from "react";
 
 const Login = ({
   authHandler,

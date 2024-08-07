@@ -1,0 +1,13 @@
+.listMobileContainer {
+  height: 100%;
+  margin-block: 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.listMobileMain {
+  height: 100%;
+}
