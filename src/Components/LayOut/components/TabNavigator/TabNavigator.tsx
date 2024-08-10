@@ -8,12 +8,12 @@ const TabNavigator = () => {
       <div className={styles.tabNavMain}>
         {linksSideBar.map((link, i) => {
           return (
-            <Link className={styles.tabNavNavigation} to={link.link}>
-              <img
-                key={`tab-navigator-${i}`}
-                src={link.iconNegative}
-                className={styles.tabNavLinkIcon}
-              />
+            <Link
+              key={`tab-navigator-${i}`}
+              className={styles.tabNavNavigation}
+              to={link.link}
+            >
+              <img src={link.iconNegative} className={styles.tabNavLinkIcon} />
               <p className={styles.tabNavName}>{link.name}</p>
             </Link>
           );

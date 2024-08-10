@@ -1,31 +1,20 @@
 import { FC } from "react";
-import { useScreenDimentions } from "../../utils/hooks/useScreenDimentions";
-import Table from "../../Components/Table/Table";
-import InputSearch from "../../Components/Inputs/InputSearch/InputSearch";
+import Page from "../../Components/Page/Page";
 import Data from "./utils/MOCK_DATA (2).json";
-import styles from "./Neighbors.module.css";
-import ListDataMobile from "../../Components/Table/ListDataMobile/ListDataMobile";
+import InputSearch from "../../Components/Inputs/InputSearch/InputSearch";
 
 const Neighbors = (): ReturnType<FC> => {
-  const screen = useScreenDimentions();
   return (
-    <>
-      <div className={styles.inputDisplayContainer}>
+    <Page>
+      <Page.InputContainer>
         <InputSearch placeholderText="Buscar" />
-      </div>
-      {screen.width < 768 && (
-        <ListDataMobile
-          headers={["Casa", "Nombre", "email"]}
-          tableData={Data}
-        />
-      )}
-      {screen.width > 768 && (
-        <Table
-          headers={["Casa", "Nombre", "Correo", "Telefono", "Herramientas"]}
-          tableData={Data}
-        />
-      )}
-    </>
+      </Page.InputContainer>
+      <Page.TableContainer
+        headersWeb={["Casa", "Nombre", "Correo", "Telefono", "Herramientas"]}
+        headersMobile={["Casa", "Nombre", "email"]}
+        data={Data}
+      />
+    </Page>
   );
 };
 

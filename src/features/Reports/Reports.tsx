@@ -1,27 +1,19 @@
 import InputSearch from "../../Components/Inputs/InputSearch/InputSearch";
-import Table from "../../Components/Table/Table";
+import Page from "../../Components/Page/Page";
 import Data from "./utils/MOCK_DATA (2).json";
-import styles from "./Reports.module.css";
-import ListDataMobile from "../../Components/Table/ListDataMobile/ListDataMobile";
-import { useScreenDimentions } from "../../utils/hooks/useScreenDimentions";
 
 const Reports = () => {
-  const screen = useScreenDimentions();
   return (
-    <>
-      <div className={styles.inputDisplayContainer}>
+    <Page>
+      <Page.InputContainer>
         <InputSearch placeholderText="Buscar" />
-      </div>
-      {screen.width < 768 && (
-        <ListDataMobile headers={["Id", "Estado"]} tableData={Data} />
-      )}
-      {screen.width > 768 && (
-        <Table
-          headers={["Id", "Estado", "Fecha", "Herramientas"]}
-          tableData={Data}
-        />
-      )}
-    </>
+      </Page.InputContainer>
+      <Page.TableContainer
+        data={Data}
+        headersWeb={["Id", "Estado", "Fecha", "Herramientas"]}
+        headersMobile={["Id", "Estado"]}
+      />
+    </Page>
   );
 };
 

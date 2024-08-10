@@ -1,15 +1,12 @@
 .headerContainer {
   height: 40px;
   width: 100%;
+  background-color: white;
+  border: 1px solid rgb(224, 224, 224);
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  background-color: white;
-  border: 1px solid rgb(224, 224, 224);
   position: fixed;
-  justify-content: center;
-  align-items: center;
+  top: 0px;
+  flex-shrink: 0;
 }
