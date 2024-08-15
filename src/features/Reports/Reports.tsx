@@ -1,19 +1,19 @@
 import InputSearch from "../../Components/Inputs/InputSearch/InputSearch";
-import Page from "../../Components/Page/Page";
+import PagesContentTemplate from "../../Components/PagesContentTemplate/PagesContentTemplate";
 import Data from "./utils/MOCK_DATA (2).json";
 
 const Reports = () => {
   return (
-    <Page>
-      <Page.InputContainer>
+    <PagesContentTemplate>
+      <PagesContentTemplate.InputContainer>
         <InputSearch placeholderText="Buscar" />
-      </Page.InputContainer>
-      <Page.TableContainer
+      </PagesContentTemplate.InputContainer>
+      <PagesContentTemplate.TableContainer
         data={Data}
         headersWeb={["Id", "Estado", "Fecha", "Herramientas"]}
         headersMobile={["Id", "Estado"]}
       />
-    </Page>
+    </PagesContentTemplate>
   );
 };
 

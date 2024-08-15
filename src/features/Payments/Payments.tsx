@@ -4,29 +4,29 @@ import ModalPayment from "./components/ModalPayment/ModalPayment";
 import ModalExpenses from "./components/ModalExpenses/ModalExpenses";
 import ModalAgreement from "./components/ModalAgreement/ModalAgreement";
 import ButtonsForModals from "./components/ButtonsForModals/ButtonsForModals";
-import Page from "../../Components/Page/Page";
+import PagesContentTemplate from "../../Components/PagesContentTemplate/PagesContentTemplate";
 
 const Payments = () => {
   const [modal, setModal] = useState<string>("");
 
   return (
-    <Page>
+    <PagesContentTemplate>
       <ModalPayment isOpen={modal} closeModal={() => setModal("")} />
       <ModalExpenses isOpen={modal} closeModal={() => setModal("")} />
       <ModalAgreement isOpen={modal} closeModal={() => setModal("")} />
-      <Page.InputContainer>
+      <PagesContentTemplate.InputContainer>
         <ButtonsForModals
           setModalExpenses={() => setModal("expense")}
           setModalAgreement={() => setModal("agreement")}
           setModalPayment={() => setModal("payment")}
         />
-      </Page.InputContainer>
-      <Page.TableContainer
+      </PagesContentTemplate.InputContainer>
+      <PagesContentTemplate.TableContainer
         headersWeb={["Casa", "Estado", "Total", "Fecha", "Herramientas"]}
         headersMobile={["Casa", "Fecha", "Total"]}
         data={Data}
       />
-    </Page>
+    </PagesContentTemplate>
   );
 };
 

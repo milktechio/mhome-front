@@ -1,28 +1,63 @@
-import { FC } from "react";
-import { LoginInputData } from "./utils/login.types";
-import LoginImageArea from "./components/LoginImageArea/LoginImageArea";
-import LoginLayOut from "./components/LoginLayOut/LoginLayOut";
-import LoginInputArea from "./components/LoginInputArea/LoginInputArea";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useScreenDimentions } from "../../utils/hooks/screenDimentions";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
+import { loginUser, logOut } from "../../redux/features/user/userSlice";
+import { useState } from "react";
+import PagesSessionTemplate from "../../Components/PagesSessionTemplate/PagesSessionTemplate";
+import PageLoginTemplate from "../../Components/PageLoginTemplate/PageLoginTemplate";
+import "./Login.css";
 
-const Login = ({
-  inputValueEmail,
-  inputValuePassword,
-  authHandler,
-  onchangeHandlerEmail,
-  onchangeHandlerPassword,
-}: LoginInputData): ReturnType<FC> => {
+function App() {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const token = useAppSelector((state) => state.user.payloadLogin);
+  const screen = useScreenDimentions();
+
+  const loginSessionHandler = () => {
+    const data = { email: email, password: password };
+    dispatch(loginUser(data));
+    navigate("/Home");
+  };
+
   return (
-    <LoginLayOut>
-      <LoginImageArea />
-      <LoginInputArea
-        inputValueEmail={inputValueEmail}
-        inputValuePassword={inputValuePassword}
-        authHandler={authHandler}
-        onchangeHandlerEmail={onchangeHandlerEmail}
-        onchangeHandlerPassword={onchangeHandlerPassword}
-      />
-    </LoginLayOut>
-  );
-};
+    <>
+      {!token && (
+        <PageLoginTemplate>
+          <PageLoginTemplate.ImageLogoSection />
+          <PageLoginTemplate.InputSection authHandler={loginSessionHandler}>
+            <PageLoginTemplate.InputBox
+              inputValueEmail={email}
+              inputValuePassword={password}
+              onchangeHandlerEmail={(e) => setEmail(e.target.value)}
+              onchangeHandlerPassword={(e) => setPassword(e.target.value)}
+            />
+            <Link to="/register">regístrate!</Link>
+          </PageLoginTemplate.InputSection>
+        </PageLoginTemplate>
+      )}
 
-export default Login;
+      {token && (
+        <PagesSessionTemplate>
+          <PagesSessionTemplate.SideBar
+            screenWidth={screen.width}
+            handler={() => dispatch(logOut())}
+          />
+          <PagesSessionTemplate.PageDisplayContainer>
+            <PagesSessionTemplate.PageDisplayHeader
+              screenWidth={screen.width}
+            />
+            <Outlet />
+            <PagesSessionTemplate.PageDisplayTabNav
+              screenWidth={screen.width}
+            />
+          </PagesSessionTemplate.PageDisplayContainer>
+        </PagesSessionTemplate>
+      )}
+    </>
+  );
+}
+
+export default App;

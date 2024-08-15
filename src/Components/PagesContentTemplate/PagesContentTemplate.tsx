@@ -1,11 +1,11 @@
 import { ReactNode } from "react";
 import { useScreenDimentions } from "../../utils/hooks/screenDimentions";
 import { TableDataType } from "../../utils/types/tableData.types";
-import Table from "../Table/Table";
 import ListDataMobile from "../Table/ListDataMobile/ListDataMobile";
-import styles from "./Page.module.css";
+import Table from "../Table/Table";
+import styles from "./PagesContentTemplate.module.css";
 
-const Page = ({ children }: { children: ReactNode }) => {
+const PagesContentTemplate = ({ children }: { children: ReactNode }) => {
   return <div className={styles.pageContainer}>{children}</div>;
 };
 
@@ -40,7 +40,7 @@ const TableContainer = ({
   );
 };
 
-Page.InputContainer = InputContainer;
-Page.TableContainer = TableContainer;
+PagesContentTemplate.InputContainer = InputContainer;
+PagesContentTemplate.TableContainer = TableContainer;
 
-export default Page;
+export default PagesContentTemplate;
