@@ -1,17 +1,26 @@
-import React, { FC } from "react";
+import { FC } from "react";
+import { LoginInputData } from "./utils/login.types";
 import LoginImageArea from "./components/LoginImageArea/LoginImageArea";
 import LoginLayOut from "./components/LoginLayOut/LoginLayOut";
 import LoginInputArea from "./components/LoginInputArea/LoginInputArea";
 
 const Login = ({
+  inputValueEmail,
+  inputValuePassword,
   authHandler,
-}: {
-  authHandler: React.MouseEventHandler<HTMLButtonElement>;
-}): ReturnType<FC> => {
+  onchangeHandlerEmail,
+  onchangeHandlerPassword,
+}: LoginInputData): ReturnType<FC> => {
   return (
     <LoginLayOut>
       <LoginImageArea />
-      <LoginInputArea authHandler={authHandler} />
+      <LoginInputArea
+        inputValueEmail={inputValueEmail}
+        inputValuePassword={inputValuePassword}
+        authHandler={authHandler}
+        onchangeHandlerEmail={onchangeHandlerEmail}
+        onchangeHandlerPassword={onchangeHandlerPassword}
+      />
     </LoginLayOut>
   );
 };

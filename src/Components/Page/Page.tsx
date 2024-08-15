@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { useScreenDimentions } from "../../utils/hooks/useScreenDimentions";
+import { useScreenDimentions } from "../../utils/hooks/screenDimentions";
 import { TableDataType } from "../../utils/types/tableData.types";
 import Table from "../Table/Table";
 import ListDataMobile from "../Table/ListDataMobile/ListDataMobile";

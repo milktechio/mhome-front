@@ -1,34 +1,34 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "../App/App";
-import Dashboard from "../features/Dashboard/Dashboard";
 import Home from "../features/Home/Home";
 import Neighbors from "../features/Neighbors/Neighbors";
 import Reports from "../features/Reports/Reports";
 import Payments from "../features/Payments/Payments";
+import Register from "../features/Register/Register";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <App />,
+    path: "/register",
+    element: <Register />,
   },
   {
-    path: "/dashboard",
-    element: <Dashboard />,
+    path: "/",
+    element: <App />,
     children: [
       {
-        path: "/dashboard/Home",
+        path: "/Home",
         element: <Home />,
       },
       {
-        path: "/dashboard/Neighbors",
+        path: "/Neighbors",
         element: <Neighbors />,
       },
       {
-        path: "/dashboard/Reports",
+        path: "/Reports",
         element: <Reports />,
       },
       {
-        path: "/dashboard/Payments",
+        path: "/Payments",
         element: <Payments />,
       },
     ],

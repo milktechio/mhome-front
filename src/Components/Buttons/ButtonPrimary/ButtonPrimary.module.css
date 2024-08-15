@@ -10,6 +10,7 @@
   cursor: pointer;
   user-select: none;
 }
-.ButtonPrimary:hover {
-  opacity: 0.6;
+
+.ButtonPrimary:active {
+  background-color: grey;
 }

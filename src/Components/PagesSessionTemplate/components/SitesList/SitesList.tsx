@@ -31,7 +31,7 @@ const SitesList = ({ linksList }: ILinksList) => {
             >
               <Link
                 className={styles.linkStyle}
-                to={`/Dashboard/${link.link}`}
+                to={`/${link.link}`}
                 // cambiar color de fondo al colocar cursor
               >
                 {/* cambio de icono con color opuesto al fondo */}

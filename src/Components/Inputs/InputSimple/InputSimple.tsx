@@ -1,10 +1,19 @@
 import { InputDataType } from "../../../utils/types/inputData.types";
 import styles from "./InputSimple.module.css";
 
-const InputSimple = ({ placeholderText, inputValue }: InputDataType) => {
+const InputSimple = ({
+  placeholderText,
+  inputValue,
+  handler,
+}: InputDataType) => {
   return (
     <div className={styles.inputContainer}>
-      <input value={inputValue} placeholder={placeholderText} type="text" />
+      <input
+        value={inputValue}
+        onChange={handler}
+        placeholder={placeholderText}
+        type="text"
+      />
     </div>
   );
 };
