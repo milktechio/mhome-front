@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Data from "../Payments/utils/MOCK_DATA (2).json";
+import Data from "./utils/MOCK_DATA (2).json";
 import ModalPayment from "./components/ModalPayment/ModalPayment";
 import ModalExpenses from "./components/ModalExpenses/ModalExpenses";
 import ModalAgreement from "./components/ModalAgreement/ModalAgreement";
 import ButtonsForModals from "./components/ButtonsForModals/ButtonsForModals";
-import PagesContentTemplate from "../../Components/PagesContentTemplate/PagesContentTemplate";
+import PagesContentTemplate from "../../../Components/PagesContentTemplate/PagesContentTemplate";
 
 const Payments = () => {
   const [modal, setModal] = useState<string>("");

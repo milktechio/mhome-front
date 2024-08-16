@@ -1,5 +1,4 @@
 import { ReactNode } from "react";
-import { linksSideBar } from "./utils/SideBar.utils";
 import layOutStyles from "./css/LayOut.module.css";
 import sideBarStyles from "./css/SideBar.module.css";
 import pageDisplayStyles from "./css/PageDisplay.module.css";
@@ -8,6 +7,7 @@ import BottomSideBar from "./components/BottomSideBar/BottomSideBar";
 import MHome from "../../assets/LayOut/MHomeCornerLogo.svg";
 import HeaderMobileVersion from "./components/HeaderMobileVersion/HeaderMobileVersion";
 import TabNavigator from "./components/TabNavigator/TabNavigator";
+import { LinksListType } from "../../utils/data/LinkListNav";
 
 const PagesSessionTemplate = ({ children }: { children: ReactNode }) => {
   return <div className={layOutStyles.layoutContainer}>{children}</div>;
@@ -15,9 +15,11 @@ const PagesSessionTemplate = ({ children }: { children: ReactNode }) => {
 
 const SideBar = ({
   screenWidth,
+  linksList,
   handler,
 }: {
   screenWidth: number;
+  linksList: LinksListType[];
   handler?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
   return (
@@ -25,7 +27,7 @@ const SideBar = ({
       {screenWidth > 768 && (
         <div className={sideBarStyles.sideBarContainer}>
           <div></div>
-          <SitesList linksList={linksSideBar} />
+          <SitesList linksList={linksList} />
           <BottomSideBar handler={handler} />
         </div>
       )}
@@ -52,8 +54,14 @@ const PageDisplayHeader = ({ screenWidth }: { screenWidth: number }) => {
   );
 };
 
-const PageDisplayTabNav = ({ screenWidth }: { screenWidth: number }) => {
-  return <>{screenWidth < 768 && <TabNavigator />}</>;
+const PageDisplayTabNav = ({
+  screenWidth,
+  linksList,
+}: {
+  screenWidth: number;
+  linksList: LinksListType[];
+}) => {
+  return <>{screenWidth < 768 && <TabNavigator linksList={linksList} />}</>;
 };
 
 PagesSessionTemplate.SideBar = SideBar;

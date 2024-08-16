@@ -1,7 +1,7 @@
 import { FC } from "react";
-import PagesContentTemplate from "../../Components/PagesContentTemplate/PagesContentTemplate";
 import Data from "./utils/MOCK_DATA (2).json";
-import InputSearch from "../../Components/Inputs/InputSearch/InputSearch";
+import InputSearch from "../../../Components/Inputs/InputSearch/InputSearch";
+import PagesContentTemplate from "../../../Components/PagesContentTemplate/PagesContentTemplate";
 
 const Neighbors = (): ReturnType<FC> => {
   return (

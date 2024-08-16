@@ -1,12 +1,12 @@
+import { LinksListType } from "../../../../utils/data/LinkListNav";
 import styles from "./TabNavigator.module.css";
-import { linksSideBar } from "../../utils/SideBar.utils";
 import { Link } from "react-router-dom";
 
-const TabNavigator = () => {
+const TabNavigator = ({ linksList }: { linksList: LinksListType[] }) => {
   return (
     <div className={styles.tabNavContainer}>
       <div className={styles.tabNavMain}>
-        {linksSideBar.map((link, i) => {
+        {linksList.map((link, i) => {
           return (
             <Link
               key={`tab-navigator-${i}`}

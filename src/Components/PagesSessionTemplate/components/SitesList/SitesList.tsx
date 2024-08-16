@@ -1,18 +1,9 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import styles from "./SitesList.module.css";
+import { LinksListType } from "../../../../utils/data/LinkListNav";
 
-interface ILinksList {
-  linksList: {
-    id: number;
-    name: string;
-    link: string;
-    icon: string;
-    iconNegative: string;
-  }[];
-}
-
-const SitesList = ({ linksList }: ILinksList) => {
+const SitesList = ({ linksList }: { linksList: LinksListType[] }) => {
   const [index, setIndex] = useState<number | null>(null);
   return (
     <div className={styles.sitesListContainer}>

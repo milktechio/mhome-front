@@ -1,5 +1,5 @@
-import InputSearch from "../../../../Components/Inputs/InputSearch/InputSearch";
-import ButtonPrimary from "../../../../Components/Buttons/ButtonPrimary/ButtonPrimary";
+import InputSearch from "../../../../../Components/Inputs/InputSearch/InputSearch";
+import ButtonPrimary from "../../../../../Components/Buttons/ButtonPrimary/ButtonPrimary";
 import styles from "./ButtonsForModals.module.css";
 
 type buttonsForModalsType = {

@@ -1,6 +1,7 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useScreenDimentions } from "../../utils/hooks/screenDimentions";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
+import { linksSideBarUser } from "../../utils/data/SideBar.utils";
 import { loginUser, logOut } from "../../redux/features/user/userSlice";
 import { useState } from "react";
 import PagesSessionTemplate from "../../Components/PagesSessionTemplate/PagesSessionTemplate";
@@ -19,7 +20,7 @@ function App() {
   const loginSessionHandler = () => {
     const data = { email: email, password: password };
     dispatch(loginUser(data));
-    navigate("/Home");
+    navigate("/user-home");
   };
 
   return (
@@ -42,6 +43,7 @@ function App() {
       {token && (
         <PagesSessionTemplate>
           <PagesSessionTemplate.SideBar
+            linksList={linksSideBarUser}
             screenWidth={screen.width}
             handler={() => dispatch(logOut())}
           />
@@ -51,6 +53,7 @@ function App() {
             />
             <Outlet />
             <PagesSessionTemplate.PageDisplayTabNav
+              linksList={linksSideBarUser}
               screenWidth={screen.width}
             />
           </PagesSessionTemplate.PageDisplayContainer>

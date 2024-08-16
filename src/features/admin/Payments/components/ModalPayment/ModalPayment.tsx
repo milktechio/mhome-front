@@ -1,5 +1,5 @@
-import InputSimple from "../../../../Components/Inputs/InputSimple/InputSimple";
-import Modal from "../../../../Components/Modal/Modal";
+import InputSimple from "../../../../../Components/Inputs/InputSimple/InputSimple";
+import Modal from "../../../../../Components/Modal/Modal";
 import "./ModalPayment.css";
 
 type ModalPaymentType = {

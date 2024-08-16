@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { UserDataType } from "../../../utils/types/user.types";
 
 const url = "https://api-mhome.milktech.io/api/";
 
@@ -54,6 +55,21 @@ export const registerUser = createAsyncThunk(
   }
 );
 
+export const getMyProfile = createAsyncThunk(
+  "profile/user",
+  async (token: string) => {
+    try {
+      const profile = await axios.get(`${url}users/my-user`, {
+        headers: { Authorization: token },
+      });
+
+      return profile.data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
+
 type initialState = {
   successLogin: boolean;
   pendingLogin: boolean;
@@ -61,6 +77,13 @@ type initialState = {
   payloadLogin: string;
 
   successRegister: boolean;
+  pendingRegister: boolean;
+  rejectedRegister: boolean;
+
+  successMyProfile: boolean;
+  pendingMyProfile: boolean;
+  rejectedMyProfile: boolean;
+  dataMyProfile: UserDataType;
 };
 
 const initialState: initialState = {
@@ -70,6 +93,21 @@ const initialState: initialState = {
   payloadLogin: "",
 
   successRegister: false,
+  pendingRegister: false,
+  rejectedRegister: false,
+
+  successMyProfile: false,
+  pendingMyProfile: false,
+  rejectedMyProfile: false,
+  dataMyProfile: {
+    name: "",
+    lastname: "",
+    email: "",
+    mobile: "",
+    gender: "",
+    eth_addres: "",
+    chain_id: "",
+  },
 };
 
 export const userSlice = createSlice({
@@ -97,6 +135,10 @@ export const userSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state) => {
         state.successRegister = true;
+      })
+      .addCase(getMyProfile.fulfilled, (state, action) => {
+        state.successMyProfile = true;
+        state.dataMyProfile = action.payload; 
       });
   },
 });
