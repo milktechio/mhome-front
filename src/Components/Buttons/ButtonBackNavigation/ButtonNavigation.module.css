@@ -1,4 +1,4 @@
-.backNavContainer {
+.navContainer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,15 +7,13 @@
   border: 1px solid rgb(170, 170, 170);
   border-radius: 5px;
   padding: 2px;
-  position: fixed;
-  left: 10px;
 }
 
-.backNavContainer:active {
+.navContainer:active {
   opacity: 0.5;
 }
 
-.backNavContainerImage {
+.navContainerImage {
   width: 15px;
   height: 15px;
 }

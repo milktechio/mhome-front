@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import { LinksListType } from "../../utils/data/LinkListNav";
 import layOutStyles from "./css/LayOut.module.css";
 import sideBarStyles from "./css/SideBar.module.css";
 import pageDisplayStyles from "./css/PageDisplay.module.css";
@@ -7,7 +8,7 @@ import BottomSideBar from "./components/BottomSideBar/BottomSideBar";
 import MHome from "../../assets/LayOut/MHomeCornerLogo.svg";
 import HeaderMobileVersion from "./components/HeaderMobileVersion/HeaderMobileVersion";
 import TabNavigator from "./components/TabNavigator/TabNavigator";
-import { LinksListType } from "../../utils/data/LinkListNav";
+
 
 const PagesSessionTemplate = ({ children }: { children: ReactNode }) => {
   return <div className={layOutStyles.layoutContainer}>{children}</div>;

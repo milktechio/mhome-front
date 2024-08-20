@@ -2,7 +2,7 @@ import { useState } from "react";
 import { setDataHanlder } from "../../utils/handlers/setDataHandlers";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../redux/features/user/userSlice";
-import ButtonBackNavigation from "../../Components/Buttons/ButtonBackNavigation/ButtonBackNavigation";
+import ButtonNavigation from "../../Components/Buttons/ButtonBackNavigation/ButtonNavigation";
 import ButtonPrimary from "../../Components/Buttons/ButtonPrimary/ButtonPrimary";
 import InputSimple from "../../Components/Inputs/InputSimple/InputSimple";
 
@@ -27,7 +27,7 @@ const Register = () => {
   return (
     <div>
       <header>
-        <ButtonBackNavigation />
+        <ButtonNavigation />
       </header>
       <main>
         <div>

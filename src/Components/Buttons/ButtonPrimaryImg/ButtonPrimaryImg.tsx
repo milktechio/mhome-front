@@ -1,14 +1,9 @@
+import { ButtonPrimaryType } from "@/utils/types/button.types";
 import styles from "./ButtonPrimaryImg.module.css";
 
-interface IButtonPrimaryImg {
-  text: string;
-  img?: string;
-  clickHandler?: React.MouseEventHandler<HTMLButtonElement> | undefined;
-}
-
-const ButtonPrimaryImg = ({ text, img, clickHandler }: IButtonPrimaryImg) => {
+const ButtonPrimaryImg = ({ text, img, handler }: ButtonPrimaryType) => {
   return (
-    <button className={styles.ButtonPrimary} onClick={clickHandler}>
+    <button className={styles.ButtonPrimary} onClick={handler}>
       {text}
       {img && <img src={img} />}
     </button>

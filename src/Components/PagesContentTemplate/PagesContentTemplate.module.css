@@ -26,8 +26,8 @@
 @media (max-width: 768px) {
   .pageContainer {
     height: 100%;
-    flex-grow: 1;
-    margin: 0px;
+    margin-top: 40px;
+    margin-bottom: 40px;
   }
 
   .pageInputContainer {

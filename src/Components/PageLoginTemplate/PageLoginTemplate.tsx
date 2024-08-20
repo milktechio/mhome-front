@@ -36,7 +36,7 @@ const InputSection = ({
     <div className={loginInputArea.loginInputArea}>
       {children}
       <div className={loginInputArea.buttonContainer}>
-        <ButtonPrimaryImg text="Ingresar" clickHandler={authHandler} />
+        <ButtonPrimaryImg text="Ingresar" handler={authHandler} />
       </div>
     </div>
   );

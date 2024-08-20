@@ -1,6 +1,7 @@
 .headerContainer {
   height: 40px;
   width: 100%;
+  position: relative;
   background-color: white;
   border: 1px solid rgb(224, 224, 224);
   display: flex;
@@ -9,4 +10,9 @@
   position: fixed;
   top: 0px;
   flex-shrink: 0;
+}
+
+.buttonBack {
+  position: absolute;
+  left: 10px;
 }
