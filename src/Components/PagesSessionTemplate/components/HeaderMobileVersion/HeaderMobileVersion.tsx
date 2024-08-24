@@ -14,10 +14,11 @@ const HeaderMobileVersion = () => {
     dispatch(logOut());
     navigate("/");
   };
+  
   return (
     <div className={styles.headerContainer}>
       <div className={styles.buttonBack}>
-        <ButtonNavigation handler={logOutHandler} img={Back} />
+        <ButtonNavigation handler={() => logOutHandler()} img={Back} />
       </div>
       <img src={MHome} alt="Main logo" />
     </div>

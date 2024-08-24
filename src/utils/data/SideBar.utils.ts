@@ -6,8 +6,9 @@ import homeN from "../../assets/SideBar/HomenN.svg";
 import neighborsN from "../../assets/SideBar/NeighborsN.svg";
 import paymentsN from "../../assets/SideBar/PaymentsN.svg";
 import reportsN from "../../assets/SideBar/ReportsN.svg";
+import { NavLinks } from "../types/navLinks.types";
 
-export const linksSideBarAdmin = [
+export const linksSideBarAdmin: NavLinks[] = [
   {
     id: 1,
     name: "Home",
@@ -27,18 +28,18 @@ export const linksSideBarAdmin = [
     name: "Reportes",
     link: "admin-reports",
     icon: reports,
-    iconNegative: paymentsN,
+    iconNegative: reportsN,
   },
   {
     id: 4,
     name: "Pagos",
     link: "admin-payments",
     icon: payments,
-    iconNegative: reportsN,
+    iconNegative: paymentsN,
   },
 ];
 
-export const linksSideBarUser = [
+export const linksSideBarUser: NavLinks[] = [
   {
     id: 1,
     name: "Home",
@@ -52,5 +53,12 @@ export const linksSideBarUser = [
     link: "user-profile",
     icon: neighbors,
     iconNegative: neighborsN,
+  },
+  {
+    id: 3,
+    name: "Pagos",
+    link: "user-payments",
+    icon: payments,
+    iconNegative: paymentsN,
   },
 ];

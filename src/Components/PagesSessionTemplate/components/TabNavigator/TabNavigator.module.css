@@ -5,7 +5,6 @@
   justify-content: center;
   align-items: center;
   background-color: white;
-  border: 1px solid rgb(224, 224, 224);
   position: fixed;
   bottom: 0;
   left: 0;
@@ -14,7 +13,7 @@
 }
 
 .tabNavMain {
-  width: 80%;
+  width: 85%;
   height: 30px;
   display: flex;
   justify-content: space-evenly;

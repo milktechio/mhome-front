@@ -2,9 +2,11 @@ import { useState } from "react";
 import { setDataHanlder } from "../../utils/handlers/setDataHandlers";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../redux/features/user/userSlice";
+import { useNavigate } from "react-router-dom";
 import ButtonNavigation from "../../Components/Buttons/ButtonBackNavigation/ButtonNavigation";
 import ButtonPrimary from "../../Components/Buttons/ButtonPrimary/ButtonPrimary";
 import InputSimple from "../../Components/Inputs/InputSimple/InputSimple";
+import GoBack from "../../assets/Buttons/GoBack.svg";
 
 const Register = () => {
   const [username, setUserName] = useState<string>("");
@@ -13,6 +15,8 @@ const Register = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [confirmPasword, setConfirmPasword] = useState<string>("");
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const data = {
@@ -27,7 +31,12 @@ const Register = () => {
   return (
     <div>
       <header>
-        <ButtonNavigation />
+        <ButtonNavigation
+          img={GoBack}
+          handler={() => {
+            navigate("/");
+          }}
+        />
       </header>
       <main>
         <div>
@@ -64,7 +73,7 @@ const Register = () => {
         </div>
         <div>
           <ButtonPrimary
-            clickHandler={() => dispatch(registerUser(data))}
+            handler={() => dispatch(registerUser(data))}
             text="Registrar"
           />
         </div>

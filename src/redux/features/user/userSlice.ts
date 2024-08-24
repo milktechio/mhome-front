@@ -60,10 +60,10 @@ export const getMyProfile = createAsyncThunk(
   async (token: string) => {
     try {
       const profile = await axios.get(`${url}users/my-user`, {
-        headers: { Authorization: token },
+        headers: { Authorization: `Bearer ${token}` },
       });
 
-      return profile.data;
+      return profile.data.data;
     } catch (err) {
       console.log(err);
     }
@@ -100,13 +100,21 @@ const initialState: initialState = {
   pendingMyProfile: false,
   rejectedMyProfile: false,
   dataMyProfile: {
-    name: "",
-    lastname: "",
-    email: "",
-    mobile: "",
-    gender: "",
-    eth_addres: "",
-    chain_id: "",
+    profile: {
+      name: "",
+      lastname: "",
+      email: "",
+      mobile: "",
+      gender: "",
+      eth_addres: "",
+      chain_id: "",
+    },
+    roles: [
+      {
+        id: 0,
+        name: "",
+      },
+    ],
   },
 };
 
@@ -119,6 +127,26 @@ export const userSlice = createSlice({
       state.pendingLogin = false;
       state.successLogin = false;
       state.rejectedLogin = false;
+      state.successMyProfile = false;
+      state.pendingMyProfile = false;
+      state.rejectedMyProfile = false;
+      state.dataMyProfile = {
+        profile: {
+          name: "",
+          lastname: "",
+          email: "",
+          mobile: "",
+          gender: "",
+          eth_addres: "",
+          chain_id: "",
+        },
+        roles: [
+          {
+            id: 0,
+            name: "",
+          },
+        ],
+      };
     },
   },
   extraReducers: (builder) => {
@@ -138,7 +166,7 @@ export const userSlice = createSlice({
       })
       .addCase(getMyProfile.fulfilled, (state, action) => {
         state.successMyProfile = true;
-        state.dataMyProfile = action.payload; 
+        state.dataMyProfile = action.payload;
       });
   },
 });

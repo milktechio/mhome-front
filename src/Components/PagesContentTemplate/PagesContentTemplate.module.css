@@ -23,6 +23,15 @@
   justify-content: center;
 }
 
+.acordionList {
+  height: 100%;
+  width: 100%;
+}
+
+.acordionList__main {
+  padding: 20% 0;
+}
+
 @media (max-width: 768px) {
   .pageContainer {
     height: 100%;

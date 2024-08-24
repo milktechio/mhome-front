@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import styles from "./SitesList.module.css";
 import { LinksListType } from "../../../../utils/data/LinkListNav";
+import styles from "./SitesList.module.css";
+
 
 const SitesList = ({ linksList }: { linksList: LinksListType[] }) => {
   const [index, setIndex] = useState<number | null>(null);

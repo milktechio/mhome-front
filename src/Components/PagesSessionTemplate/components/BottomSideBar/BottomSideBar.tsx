@@ -11,7 +11,7 @@ const BottomSideBar = ({
     <div className={sytles.bottomSideBarContainer}>
       <img src={secondaryLogo} alt="logo-home" />
       <div className={sytles.buttonContainer}>
-        <ButtonPrimaryImg text="Salir" clickHandler={handler} />
+        <ButtonPrimaryImg text="Salir" handler={handler} />
       </div>
     </div>
   );

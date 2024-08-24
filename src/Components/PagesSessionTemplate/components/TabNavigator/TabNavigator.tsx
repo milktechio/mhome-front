@@ -1,6 +1,6 @@
 import { LinksListType } from "../../../../utils/data/LinkListNav";
-import styles from "./TabNavigator.module.css";
 import { Link } from "react-router-dom";
+import styles from "./TabNavigator.module.css";
 
 const TabNavigator = ({ linksList }: { linksList: LinksListType[] }) => {
   return (

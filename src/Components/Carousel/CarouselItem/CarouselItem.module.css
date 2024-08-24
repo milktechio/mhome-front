@@ -1,0 +1,25 @@
+.itemContainer {
+  color: white;
+  height: 230px;
+  width: 90%;
+  background-color: #324f5d;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemImageContainer {
+  height: 50%;
+  width: 80%;
+  background-color: white;
+  border-radius: 15px;
+}
+
+.itemParraphContainer {
+  height: 30%;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+}

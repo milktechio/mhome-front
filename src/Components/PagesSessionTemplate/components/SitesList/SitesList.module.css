@@ -1,8 +1,8 @@
 .sitesListContainer {
   width: 100%;
   display: flex;
-  justify-content: flex-start;
-  align-items: start;
+  justify-content: flex-end;
+  align-items: end;
 }
 
 .sitesListContainer img {
@@ -23,6 +23,8 @@
   height: 100%;
   margin: 0px 0px 0px 15px;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .linkStyle {
@@ -31,6 +33,7 @@
   text-align: start;
   padding: 5px 0px 5px 0px;
   grid-template-columns: 20% 80%;
+  place-items: center;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
   transition: background-color 0.3s ease;
@@ -43,7 +46,7 @@
   color: #324f5d;
 }
 
-.linkText{
+.linkText {
   width: 80%;
   text-align: start;
 }

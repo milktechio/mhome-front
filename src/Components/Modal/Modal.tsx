@@ -18,7 +18,7 @@ const Modal = ({ children, title, handler }: ModalType): ReturnType<FC> => {
         </div>
         <div className={styles.modalBody}>{children}</div>
         <div className={styles.buttonContainer}>
-          <ButtonPrimary text="Close" clickHandler={handler} />
+          <ButtonPrimary text="Close" handler={handler} />
           <ButtonPrimary text="Do something!" />
         </div>
       </div>

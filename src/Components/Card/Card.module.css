@@ -1,0 +1,41 @@
+.cardContainer {
+  width: 100%;
+  padding: 15px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  background-color: #324f5d;
+  color: white;
+}
+
+.cardContainer__header {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.cardContainer__body {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5px 0px;
+}
+
+.cardContainer__footer {
+  width: 100%;
+  margin: 5px 0px;
+}
+
+.cardContainer__input {
+  width: 80%;
+  margin: 5px 0px;
+}
+
+.cardContainer__button {
+  width: 80%;
+}
