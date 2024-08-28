@@ -1,12 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "../features/admin/Home/Home";
-import Neighbors from "../features/admin/Neighbors/Neighbors";
-import Reports from "../features/admin/Reports/Reports";
-import Payments from "../features/admin/Payments/Payments";
+import Home from "../features/Pages/Admin/Home/Home";
+import Neighbors from "@/features/Pages/Admin/Neighbors/Neighbors";
+import Reports from "@/features/Pages/Admin/Reports/Reports";
+import Payments from "@/features/Pages/Admin/Payments/Payments";
 import Register from "../features/Register/Register";
-import HomeUser from "../features/user/Home/HomeUser";
-import ProfileUser from "../features/user/Profile/ProfileUser";
-import PaymentsUser from "@/features/user/Payments/PaymentsUser";
+import HomeUser from "@/features/Pages/User/Home/HomeUser";
+import ProfileUser from "@/features/Pages/User/Profile/ProfileUser";
+import PaymentsUser from "@/features/Pages/User/Payments/PaymentsUser";
 import App from "@/features/App/App";
 
 const router = createBrowserRouter([

@@ -1,0 +1,11 @@
+.buttonSquareContainer {
+  all: unset;
+  height: 80%;
+  width: 25px;
+  background-color: #324f5d;
+  border-radius: 2.5px;
+}
+
+.buttonSquareContainer:active {
+  opacity: 0.8;
+}

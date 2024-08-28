@@ -24,7 +24,7 @@ const Table = ({ headers, handler, tableData }: TableData) => {
                     return <td key={`datum-${i}`}>{data[el]}</td>;
                   })}
                   <td>
-                    <div className="tools-container">
+                    <div className={styles.toolsContainer}>
                       <ButtonViewTable handler={handler} />
                     </div>
                   </td>

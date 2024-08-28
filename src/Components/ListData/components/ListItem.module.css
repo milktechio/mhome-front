@@ -1,0 +1,12 @@
+.listMobileItem {
+  width: 100%;
+  padding: 3px;
+  border: 1px solid rgb(223, 223, 223);
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgb(223, 223, 223);
+  margin-block: 5px;
+}
+
+.listMobileItem:active {
+  background-color: rgb(245, 245, 245);
+}

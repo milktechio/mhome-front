@@ -54,29 +54,29 @@ table tbody tr:last-child td {
 }
 
 /* Scroll Bar de la Tabla */
-.table-container::-webkit-scrollbar {
-  width: 10px;
+.tableContainer::-webkit-scrollbar {
+  width: 8px;
   /* Ancho de la barra de desplazamiento */
 }
 
 /* Estilizar el riel de la barra de desplazamiento */
-.table-container::-webkit-scrollbar-track {
+.tableContainer::-webkit-scrollbar-track {
   opacity: 0.8;
   background-color: transparent; /* Color de fondo del riel */
 }
 
 /* Estilizar el mango de la barra de desplazamiento */
-.table-container::-webkit-scrollbar-thumb {
+.tableContainer::-webkit-scrollbar-thumb {
   background: grey; /* Color del mango de la barra */
   border-radius: 10px; /* Borde redondeado del mango */
 }
 
 /* Cambiar el color del mango cuando se está desplazando */
-.table-container::-webkit-scrollbar-thumb:hover {
+.tableContainer::-webkit-scrollbar-thumb:hover {
   background: #555; /* Nuevo color del mango al pasar el mouse */
 }
 
-.tools-container {
+.toolsContainer {
   display: flex;
   justify-content: space-evenly;
 }

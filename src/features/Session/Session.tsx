@@ -3,7 +3,7 @@ import { logOut } from "@/redux/features/user/userSlice";
 import { useAppDispatch } from "@/redux/hooks/hooks";
 import { useScreenDimentions } from "@/utils/hooks/screenDimentions";
 import { NavLinks } from "@/utils/types/navLinks.types";
-import PagesSessionTemplate from "@/Components/PagesSessionTemplate/PagesSessionTemplate";
+import PageSessionLayOut from "@/layouts/PageSessionLayOut/PageSessionLayOut";
 
 const Session = ({ links }: { links: NavLinks[] }) => {
   const screen = useScreenDimentions();
@@ -17,21 +17,17 @@ const Session = ({ links }: { links: NavLinks[] }) => {
 
   return (
     <>
-      <PagesSessionTemplate>
-        <PagesSessionTemplate.SideBar
-          linksList={links}
-          screenWidth={screen.width}
+      <PageSessionLayOut>
+        <PageSessionLayOut.Header screen={screen.width} />
+        <PageSessionLayOut.SideBar
+          screen={screen.width}
+          links={links}
           handler={logOutHandler}
         />
-        <PagesSessionTemplate.PageDisplayContainer>
-          <PagesSessionTemplate.PageDisplayHeader screenWidth={screen.width} />
+        <PageSessionLayOut.Content>
           <Outlet />
-          <PagesSessionTemplate.PageDisplayTabNav
-            linksList={links}
-            screenWidth={screen.width}
-          />
-        </PagesSessionTemplate.PageDisplayContainer>
-      </PagesSessionTemplate>
+        </PageSessionLayOut.Content>
+      </PageSessionLayOut>
     </>
   );
 };

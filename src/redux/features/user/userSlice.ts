@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 import { UserDataType } from "../../../utils/types/user.types";
+import axios from "axios";
 
 const url = "https://api-mhome.milktech.io/api/";
 

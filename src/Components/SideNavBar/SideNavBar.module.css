@@ -1,0 +1,37 @@
+.sideNavBarContainer {
+  height: 100%;
+  width: 100%;
+  color: white;
+  background-color: #324f5d;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  display: grid;
+  grid-template:
+    "linkArea" 60%
+    "logoArea" 30%
+    "buttonArea" 10%;
+
+  .linkArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logoArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logoArea__image {
+    width: 90%;
+    height: 90%;
+  }
+
+  .buttonArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-inline: 10%;
+  }
+}

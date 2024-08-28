@@ -1,6 +1,5 @@
-import { Link } from "react-router-dom";
 import { MouseEventHandler, SetStateAction } from "react";
-import PageLoginTemplate from "@/Components/PageLoginTemplate/PageLoginTemplate";
+import LoginLayOut from "@/layouts/LoginLayOut/LoginLayOut";
 
 const Login = ({
   email,
@@ -16,18 +15,18 @@ const Login = ({
   getTokenHandler: MouseEventHandler;
 }) => {
   return (
-    <PageLoginTemplate>
-      <PageLoginTemplate.ImageLogoSection />
-      <PageLoginTemplate.InputSection authHandler={getTokenHandler}>
-        <PageLoginTemplate.InputBox
+    <LoginLayOut>
+      <LoginLayOut.SideBarComponent>
+        <LoginLayOut.InputAreaContent
           inputValueEmail={email}
           inputValuePassword={password}
           onchangeHandlerEmail={(e) => setEmail(e.target.value)}
           onchangeHandlerPassword={(e) => setPassword(e.target.value)}
         />
-        <Link to="/register">regístrate!</Link>
-      </PageLoginTemplate.InputSection>
-    </PageLoginTemplate>
+        <LoginLayOut.LinksAreaContent />
+        <LoginLayOut.ButtonAreaContent authHandler={getTokenHandler} />
+      </LoginLayOut.SideBarComponent>
+    </LoginLayOut>
   );
 };
 

@@ -1,29 +1,44 @@
-import { FC, ReactNode } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 import styles from "./Modal.module.css";
-import ButtonPrimary from "../Buttons/ButtonPrimary/ButtonPrimary";
+import ButtonPrimaryImg from "../Buttons/ButtonPrimaryImg/ButtonPrimaryImg";
 
-type ModalType = {
-  children: ReactNode;
-  buttonText?: string;
-  title: string;
-  handler?: React.MouseEventHandler<HTMLButtonElement>;
-};
-
-const Modal = ({ children, title, handler }: ModalType): ReturnType<FC> => {
+const Modal = ({ children }: { children: ReactNode }) => {
   return (
-    <div className={styles.modalScreen}>
-      <div className={styles.modalMain}>
-        <div className={styles.modalHeader}>
-          <h1>{title.toUpperCase()}</h1>
-        </div>
-        <div className={styles.modalBody}>{children}</div>
-        <div className={styles.buttonContainer}>
-          <ButtonPrimary text="Close" handler={handler} />
-          <ButtonPrimary text="Do something!" />
-        </div>
-      </div>
+    <div className={styles.modalContainer}>
+      <div className={styles.modalCard}>{children}</div>
     </div>
   );
 };
+
+const Header = ({ text }: { text: string }) => {
+  return (
+    <div className={styles.header}>
+      <h2>{text.toUpperCase()}</h2>
+    </div>
+  );
+};
+
+const Body = ({ children }: { children: ReactNode }) => {
+  return <div className={styles.body}>{children}</div>;
+};
+
+const Footer = ({
+  text,
+  handler,
+}: {
+  text: string;
+  handler: MouseEventHandler<HTMLButtonElement>;
+}) => {
+  return (
+    <div className={styles.footer}>
+      <ButtonPrimaryImg handler={handler} text="Cancelar" />
+      <ButtonPrimaryImg text={text} />
+    </div>
+  );
+};
+
+Modal.Header = Header;
+Modal.Body = Body;
+Modal.Footer = Footer;
 
 export default Modal;
