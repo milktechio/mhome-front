@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useScreenDimentions } from "@/utils/hooks/screenDimentions";
 import Table from "@/Components/Table/Table";
 import PageContentDist from "@/layouts/PageContentDist/PageContentDist";
 import Data from "./MOCK_DATA (2).json";
@@ -8,7 +9,6 @@ import ModalExpenses from "./components/ModalExpenses";
 import ModalPayment from "./components/ModalPayment";
 import ModalAgreement from "./components/ModalAgreement";
 import ListDataMobile from "@/Components/ListData/ListDataMobile";
-import { useScreenDimentions } from "@/utils/hooks/screenDimentions";
 import ButtonSquare from "@/Components/Buttons/ButtonSquare/ButtonSquare";
 
 const Payments = () => {

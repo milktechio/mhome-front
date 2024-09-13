@@ -1,12 +1,9 @@
 .TopButtonContainer {
   color: white;
-  height: 80px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  border-radius: 15px;
   background-color: #324f5d;
+  height: 55px;
+  margin: 10% 20%;
+  border-radius: 15px;
   display: flex;
   justify-content: center;
   align-items: center;

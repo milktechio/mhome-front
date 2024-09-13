@@ -55,6 +55,21 @@ export const registerUser = createAsyncThunk(
   }
 );
 
+export const getUsers = createAsyncThunk(
+  "getUsers/user",
+  async (token: string) => {
+    try {
+      const profile = await axios.get(`${url}users`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      return profile.data.data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
+
 export const getMyProfile = createAsyncThunk(
   "profile/user",
   async (token: string) => {
@@ -64,6 +79,67 @@ export const getMyProfile = createAsyncThunk(
       });
 
       return profile.data.data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
+
+export const postNewReport = createAsyncThunk(
+  "create/report",
+  async (reportData: { token: string; description: string; image: string }) => {
+    try {
+      const report = new FormData();
+
+      report.append("description", reportData.description);
+      report.append("image", reportData.image);
+      const createNewReport = await axios.post(url + "report/save", report, {
+        headers: {
+          Authorization: `Bearer ${reportData.token}`,
+        },
+      });
+
+      return createNewReport;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
+
+export const getReports = createAsyncThunk(
+  "getAll/report",
+  async (token: string) => {
+    try {
+      const profile = await axios.get(`${url}report`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      return profile.data.data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
+
+export const updateReportStatus = createAsyncThunk(
+  "update/statusreport",
+  async (reportData: { token: string; id: string; status: string }) => {
+    try {
+      const report = new URLSearchParams();
+
+      report.append("status", reportData.status);
+
+      const createNewReport = await axios.put(
+        url + "report/status/" + reportData.id,
+        report,
+        {
+          headers: {
+            Authorization: `Bearer ${reportData.token}`,
+          },
+        }
+      );
+
+      return createNewReport;
     } catch (err) {
       console.log(err);
     }
@@ -84,6 +160,24 @@ type initialState = {
   pendingMyProfile: boolean;
   rejectedMyProfile: boolean;
   dataMyProfile: UserDataType;
+
+  successGetUsers: boolean;
+  pendingGetUsers: boolean;
+  rejectedGetUsers: boolean;
+  dataGetUsers: UserDataType[];
+
+  successPostReport: boolean;
+  pendingPostReport: boolean;
+  rejectedPostReport: boolean;
+
+  successGetReports: boolean;
+  pendingGetReports: boolean;
+  rejectedGetReports: boolean;
+  dataGetReports: any;
+
+  successUpdateStatusReports: boolean;
+  pendingUpdateStatusReports: boolean;
+  rejectedUpdateStatusReports: boolean;
 };
 
 const initialState: initialState = {
@@ -116,6 +210,24 @@ const initialState: initialState = {
       },
     ],
   },
+
+  successGetUsers: false,
+  pendingGetUsers: false,
+  rejectedGetUsers: false,
+  dataGetUsers: [],
+
+  successPostReport: false,
+  pendingPostReport: false,
+  rejectedPostReport: false,
+
+  successGetReports: false,
+  pendingGetReports: false,
+  rejectedGetReports: false,
+  dataGetReports: [],
+
+  successUpdateStatusReports: false,
+  pendingUpdateStatusReports: false,
+  rejectedUpdateStatusReports: false,
 };
 
 export const userSlice = createSlice({
@@ -161,12 +273,64 @@ export const userSlice = createSlice({
       .addCase(loginUser.rejected, (state) => {
         state.successLogin = true;
       })
+
       .addCase(registerUser.fulfilled, (state) => {
         state.successRegister = true;
       })
+
       .addCase(getMyProfile.fulfilled, (state, action) => {
         state.successMyProfile = true;
+        state.pendingMyProfile = false;
         state.dataMyProfile = action.payload;
+      })
+      .addCase(getMyProfile.pending, (state) => {
+        state.pendingMyProfile = true;
+      })
+      .addCase(getMyProfile.rejected, (state) => {
+        state.rejectedMyProfile = true;
+      })
+
+      .addCase(getUsers.fulfilled, (state, action) => {
+        state.successGetUsers = true;
+        state.dataGetUsers = action.payload;
+      })
+      .addCase(getUsers.pending, (state) => {
+        state.pendingGetUsers = true;
+      })
+      .addCase(getUsers.rejected, (state) => {
+        state.rejectedGetUsers = true;
+      })
+
+      .addCase(postNewReport.fulfilled, (state) => {
+        state.successPostReport = true;
+      })
+      .addCase(postNewReport.pending, (state) => {
+        state.pendingPostReport = true;
+      })
+      .addCase(postNewReport.rejected, (state) => {
+        state.rejectedPostReport = true;
+      })
+
+      .addCase(getReports.fulfilled, (state, action) => {
+        state.successGetReports = true;
+        state.dataGetReports = action.payload;
+      })
+      .addCase(getReports.pending, (state) => {
+        state.pendingGetReports = true;
+      })
+      .addCase(getReports.rejected, (state) => {
+        state.rejectedGetReports = true;
+      })
+
+      .addCase(updateReportStatus.fulfilled, (state) => {
+        state.successUpdateStatusReports = true;
+        state.pendingUpdateStatusReports = false;
+      })
+      .addCase(updateReportStatus.pending, (state) => {
+        state.pendingUpdateStatusReports = true;
+      })
+      .addCase(updateReportStatus.rejected, (state) => {
+        state.rejectedUpdateStatusReports = true;
       });
   },
 });

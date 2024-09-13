@@ -9,7 +9,7 @@ const SitesList = ({ linksList }: { linksList: LinksListType[] }) => {
   return (
     <div className={styles.sitesListContainer}>
       <ul className={styles.listContainer}>
-        {linksList.map((link, i) => {
+        {linksList?.map((link, i) => {
           return (
             <li
               className={styles.memberlistLink}

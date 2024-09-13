@@ -4,7 +4,7 @@ import styles from "./ButtonSquare.module.css";
 const ButtonSquare = ({ img, handler }: ButtonPrimaryType) => {
   return (
     <button className={styles.buttonSquareContainer} onClick={handler}>
-      {img && <img src={img} />}
+      {img && <img className={styles.buttonSquareContainer__image}  src={img} />}
     </button>
   );
 };

@@ -1,5 +1,6 @@
 .cardContainer {
-  width: 100%;
+  width: 90%;
+  height: 90%;
   padding: 15px 0px;
   display: flex;
   flex-direction: column;
@@ -29,6 +30,22 @@
 .cardContainer__footer {
   width: 100%;
   margin: 5px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatarContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.avatarContainer__picture {
+  height: 110px;
+  width: 110px;
+  border-radius: 90px;
+  background-color: white;
 }
 
 .cardContainer__input {
@@ -38,4 +55,67 @@
 
 .cardContainer__button {
   width: 80%;
+}
+
+.cardContainer__input_file {
+  all: unset;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cardContainer__text_area {
+  width: 80%;
+  margin: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+}
+
+.cardContainer__text_area_title {
+  margin: 10px 0px;
+}
+
+.cardContainer__text_area_text {
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .cardContainer {
+    height: 100%;
+  }
+
+  .cardContainer__header {
+    height: 30%;
+  }
+
+  .cardContainer__body {
+    height: 70%;
+    overflow-y: auto;
+  }
+
+  .avatarContainer__picture {
+    height: 50px;
+    width: 50px;
+    border-radius: 90px;
+    background-color: white;
+  }
+
+  .cardContainer__text_area {
+    width: 80%;
+    height: 100px;
+    margin: 0px;
+    margin-bottom: 20px;
+  }
+
+  .cardContainer__text_area_text {
+    height: 50px;
+  }
+
+  .cardContainer__input {
+    width: 80%;
+    margin: 5px 0px;
+    font-size: 12px;
+  }
 }

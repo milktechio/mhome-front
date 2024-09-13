@@ -61,4 +61,11 @@ export const linksSideBarUser: NavLinks[] = [
     icon: payments,
     iconNegative: paymentsN,
   },
+  {
+    id: 4,
+    name: "Reportes",
+    link: "user-reports",
+    icon: reports,
+    iconNegative: reportsN,
+  },
 ];

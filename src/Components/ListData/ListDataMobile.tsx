@@ -1,20 +1,23 @@
-import { TableDataType } from "../../utils/types/tableData.types";
 import ListItem from "./components/ListItem";
 import styles from "./ListDataMobile.module.css";
 
-const ListDataMobile = ({
-  tableData,
-  headers,
-}: {
-  tableData: TableDataType[];
-  headers: string[];
-}) => {
+const ListDataMobile = ({ tableData, headers, handler }: any) => {
+  
+  const handleClick = (data: string) => {
+    handler(data);
+  };
+
   return (
     <div className={styles.listMobileContainer}>
       <div className={styles.listMobileMain}>
-        {tableData.map((house, i) => {
+        {tableData?.map((data, i) => {
           return (
-            <ListItem key={`neighbor-${i}`} data={house} headers={headers} />
+            <ListItem
+              key={`data-${i}`}
+              data={data}
+              headers={headers ? headers : []}
+              handler={() => handleClick(data.id)}
+            />
           );
         })}
       </div>

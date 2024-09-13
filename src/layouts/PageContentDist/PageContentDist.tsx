@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import styles from "./PageContentDist.module.css";
+
 const PageContentDist = ({ children }: { children: ReactNode }) => {
   return <div className={styles.pageDistributionContainer}>{children}</div>;
 };

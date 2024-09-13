@@ -1,7 +1,7 @@
 .itemContainer {
   color: white;
   height: 230px;
-  width: 90%;
+  margin-inline: 10%;
   background-color: #324f5d;
   border-radius: 15px;
   display: flex;
@@ -11,8 +11,8 @@
 }
 
 .itemImageContainer {
-  height: 50%;
-  width: 80%;
+  height: 55%;
+  width: 90%;
   background-color: white;
   border-radius: 15px;
 }
@@ -22,4 +22,6 @@
   font-size: 12px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  padding-inline: 10%;
 }

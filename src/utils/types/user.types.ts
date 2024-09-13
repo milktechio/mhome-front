@@ -1,7 +1,9 @@
 export type UserDataType = {
   profile: {
+    id: string;
     name: string;
     lastname: string;
+    department: string;
     email: string;
     mobile: string;
     gender: string;

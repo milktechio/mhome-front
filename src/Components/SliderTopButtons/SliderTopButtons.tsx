@@ -3,19 +3,17 @@ import TopButtons from "./TopButtons/TopButtons";
 
 const SliderTopButtons = () => {
   return (
-    <div style={{ width: "100%", marginTop: "0px", marginBottom: "0px" }}>
-      <AliceCarousel
-        mouseTracking
-        disableDotsControls
-        disableButtonsControls={true}
-        responsive={{ 0: { items: 2 } }}
-      >
-        <TopButtons />
-        <TopButtons />
-        <TopButtons />
-        <TopButtons />
-      </AliceCarousel>
-    </div>
+    <AliceCarousel
+      mouseTracking
+      disableDotsControls
+      disableButtonsControls={true}
+      responsive={{ 0: { items: 2 }, 768: { items: 4 } }}
+    >
+      <TopButtons />
+      <TopButtons />
+      <TopButtons />
+      <TopButtons />
+    </AliceCarousel>
   );
 };
 

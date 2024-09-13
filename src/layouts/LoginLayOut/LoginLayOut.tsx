@@ -47,7 +47,7 @@ const InputAreaContent = ({
 const LinksAreaContent = () => {
   return (
     <div className={styles.linksArea}>
-      <Link to="/register">registrate</Link>
+      <Link to="/register">Recuperar contraseña</Link>
     </div>
   );
 };
