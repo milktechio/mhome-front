@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { UserDataType } from "../../../utils/types/user.types";
 import axios from "axios";
 
-const url = "https://api-mhome.milktech.io/api/";
+const url = process.env.REACT_APP_BASE_URL;
 
 export const loginUser = createAsyncThunk(
   "login/user",
