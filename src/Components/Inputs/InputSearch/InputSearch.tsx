@@ -10,7 +10,7 @@ const InputSearch = ({
 }) => {
   return (
     <div className={styles.inputContainer}>
-      <input value={inputValue} placeholder={placeholderText} type="text" />
+      <input  value={inputValue} placeholder={placeholderText} type="text" />
       <img src={icon} alt="search" />
     </div>
   );

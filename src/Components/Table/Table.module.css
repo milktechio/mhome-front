@@ -41,6 +41,9 @@ table td:first-child {
   border-left: none;
 }
 
+table  tbody tr:hover {
+  background: #f9f9f9;
+}
 table th:last-child,
 table td:last-child {
   border-right: none;

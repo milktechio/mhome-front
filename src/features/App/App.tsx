@@ -10,6 +10,7 @@ import { NavLinks } from "@/utils/types/navLinks.types";
 import Session from "../Session/Session";
 import Login from "../Login/Login";
 import "./App.css";
+import { jwtDecode } from "jwt-decode";
 
 function App() {
   const [email, setEmail] = useState<string>("");
@@ -22,31 +23,53 @@ function App() {
   const profile = useAppSelector((state) => state.user.dataMyProfile);
   const profileSuccess = useAppSelector((state) => state.user.successMyProfile);
   const profilePending = useAppSelector((state) => state.user.pendingMyProfile);
+  const [loading, setLoading] = useState(true)
 
   const getTokenHandler = () => {
     const data = { email: email, password: password };
     dispatch(loginUser(data));
   };
 
+
+  useEffect(()=>{
+
+    let tokenStoraged = localStorage.getItem('token') || false
+
+  
+    if(tokenStoraged) {
+      let tryDecode = async()=>jwtDecode(tokenStoraged)
+
+      tryDecode().then((res)=>{
+        console.log(res)
+        dispatch(getMyProfile(tokenStoraged));
+      }).catch(()=>setLoading(false))
+      
+    }else {
+      setLoading(false)
+    }
+  }, [])
+
   useEffect(() => {
-    if (token && profile.profile.name === "") {
+    if (token && profile?.profile?.name === "") {
       dispatch(getMyProfile(token));
     }
 
-    if (token && profile.roles[0].name === "administracion") {
+    if (token && profile?.roles?.[0].name === "administracion") {
       setLinks(linksSideBarAdmin);
       navigate("/admin-home");
+      setLoading(false)
     }
 
-    if (token && profile.roles[0].name === "usuario") {
+    if (token && profile?.roles?.[0].name === "usuario") {
       setLinks(linksSideBarUser);
       navigate("/user-home");
+      setLoading(false)
     }
-  }, [dispatch, navigate, token, profile.profile.name, profile.roles]);
+  }, [dispatch, navigate, token, profile?.profile?.name, profile?.roles]);
 
   return (
     <>
-      {!token && profile.profile.name === "" && (
+      {!token && profile?.profile?.name==""  && !loading &&  (
         <Login
           email={email}
           password={password}
@@ -55,8 +78,8 @@ function App() {
           getTokenHandler={getTokenHandler}
         />
       )}
-      {token && profilePending && <div>Loading...</div>}
-      {token && profileSuccess && <Session links={links} />}
+      {token && loading && <div>Loading...</div>}
+      {token && profileSuccess && !loading && <Session links={links} />}
     </>
   );
 }

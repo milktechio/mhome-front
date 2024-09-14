@@ -36,6 +36,7 @@ const InputAreaContent = ({
         handler={onchangeHandlerEmail}
       />
       <InputSimple
+        type="password"
         placeholderText="Password"
         inputValue={inputValuePassword}
         handler={onchangeHandlerPassword}

@@ -9,7 +9,7 @@ const Table = ({ headers, handler, tableData }: any) => {
 
   return (
     <>
-      <div className={styles.tableContainer}>
+      <div className={ styles.tableContainer}>
         <table className={styles.tableMain}>
           <thead className={styles.tableHeader}>
             <tr>

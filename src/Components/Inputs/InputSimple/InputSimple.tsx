@@ -6,17 +6,22 @@ const InputSimple = ({
   placeholderText,
   inputValue,
   handler,
+  type="text"
 }: InputDataType) => {
   return (
+    <>
     <div className={styles.inputContainer}>
+      
       <input
+        type={type}
+        className="form-control"
         disabled={disabled}
         value={inputValue}
         onChange={handler}
         placeholder={placeholderText}
-        type="text"
       />
     </div>
+    </>
   );
 };
 

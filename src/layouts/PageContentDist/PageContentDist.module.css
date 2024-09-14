@@ -4,8 +4,8 @@
   display: grid;
   justify-content: center;
   grid-template:
-    "header" 20%
-    "main" 80%/ 100%;
+    "header" 00%
+    "main" 100%/ 100%;
 
   .header {
     grid-area: header;

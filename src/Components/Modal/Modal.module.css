@@ -26,6 +26,7 @@
     "footer" 15%;
 
   .header {
+    margin-top: 1rem;
     grid-area: header;
     display: flex;
     justify-content: center;

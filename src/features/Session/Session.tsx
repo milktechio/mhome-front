@@ -12,7 +12,6 @@ const Session = ({ links }: { links: NavLinks[] }) => {
 
   const logOutHandler = () => {
     dispatch(logOut());
-    navigate("/");
   };
 
   return (

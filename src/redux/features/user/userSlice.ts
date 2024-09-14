@@ -15,7 +15,10 @@ export const loginUser = createAsyncThunk(
     try {
       const loginAccess = await axios.post(`${url}auth/login`, formLogin);
 
-      return loginAccess.data.data;
+      let token= loginAccess.data.data;
+
+      localStorage.setItem('token', token)
+      return token
     } catch (err) {
       console.log(err);
     }
@@ -78,6 +81,7 @@ export const getMyProfile = createAsyncThunk(
         headers: { Authorization: `Bearer ${token}` },
       });
 
+      localStorage.setItem('token', token)
       return profile.data.data;
     } catch (err) {
       console.log(err);
@@ -235,6 +239,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     logOut: (state) => {
+      localStorage.clear();
       state.payloadLogin = "";
       state.pendingLogin = false;
       state.successLogin = false;
@@ -259,6 +264,7 @@ export const userSlice = createSlice({
           },
         ],
       };
+      window.location.href='/'
     },
   },
   extraReducers: (builder) => {
@@ -282,6 +288,7 @@ export const userSlice = createSlice({
         state.successMyProfile = true;
         state.pendingMyProfile = false;
         state.dataMyProfile = action.payload;
+        state.payloadLogin = localStorage.getItem('token')
       })
       .addCase(getMyProfile.pending, (state) => {
         state.pendingMyProfile = true;

@@ -1,10 +1,8 @@
 .loginContainer {
-  width: 80%;
-  height: 80%;
-  max-width: 1350px;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
   box-shadow: 5px 5px 5px grey;
-  border: 1px solid rgb(207, 207, 207);
-  border-radius: 15px;
   display: grid;
 
   grid-template:
@@ -15,7 +13,6 @@
   .header {
     grid-area: header;
     background-color: white;
-    border-top-left-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +22,6 @@
     grid-area: sideBar;
     background-color: #324f5d;
     color: white;
-    border-bottom-left-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,8 +31,6 @@
     grid-area: imageContainer;
     width: 100%;
     height: 100%;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
     background-image: url("../../assets/Login/bgLogin.svg");
     background-position: center;
     background-repeat: no-repeat;
@@ -71,6 +65,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    a {
+      color:white !important;
+    }
   }
 
   .buttonArea {
@@ -86,7 +84,6 @@
   .loginContainer {
     width: 100%;
     height: 100%;
-    border-radius: 0px;
     border: none;
 
     grid-template:
@@ -94,9 +91,6 @@
       "sideBar" 30%
       "sideBar" 30%/100% 0%;
 
-    .sideBar {
-      border-bottom-left-radius: 0px;
-    }
 
     .imageContainer {
       width: 0px;
