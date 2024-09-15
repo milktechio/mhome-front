@@ -11,6 +11,8 @@ import Session from "../Session/Session";
 import Login from "../Login/Login";
 import "./App.css";
 import { jwtDecode } from "jwt-decode";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [email, setEmail] = useState<string>("");
@@ -23,31 +25,29 @@ function App() {
   const profile = useAppSelector((state) => state.user.dataMyProfile);
   const profileSuccess = useAppSelector((state) => state.user.successMyProfile);
   const profilePending = useAppSelector((state) => state.user.pendingMyProfile);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   const getTokenHandler = () => {
     const data = { email: email, password: password };
     dispatch(loginUser(data));
   };
 
+  useEffect(() => {
+    let tokenStoraged = localStorage.getItem("token") || false;
 
-  useEffect(()=>{
+    if (tokenStoraged) {
+      let tryDecode = async () => jwtDecode(tokenStoraged);
 
-    let tokenStoraged = localStorage.getItem('token') || false
-
-  
-    if(tokenStoraged) {
-      let tryDecode = async()=>jwtDecode(tokenStoraged)
-
-      tryDecode().then((res)=>{
-        console.log(res)
-        dispatch(getMyProfile(tokenStoraged));
-      }).catch(()=>setLoading(false))
-      
-    }else {
-      setLoading(false)
+      tryDecode()
+        .then((res) => {
+          console.log(res);
+          dispatch(getMyProfile(tokenStoraged));
+        })
+        .catch(() => setLoading(false));
+    } else {
+      setLoading(false);
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (token && profile?.profile?.name === "") {
@@ -57,19 +57,28 @@ function App() {
     if (token && profile?.roles?.[0].name === "administracion") {
       setLinks(linksSideBarAdmin);
       navigate("/admin-home");
-      setLoading(false)
+      setLoading(false);
     }
 
     if (token && profile?.roles?.[0].name === "usuario") {
       setLinks(linksSideBarUser);
       navigate("/user-home");
-      setLoading(false)
+      setLoading(false);
     }
   }, [dispatch, navigate, token, profile?.profile?.name, profile?.roles]);
 
   return (
     <>
-      {!token && profile?.profile?.name==""  && !loading &&  (
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnHover
+      />
+      {!token && profile?.profile?.name == "" && !loading && (
         <Login
           email={email}
           password={password}
