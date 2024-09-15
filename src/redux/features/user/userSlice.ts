@@ -1,8 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { UserDataType } from "../../../utils/types/user.types";
-import axios from "axios";
 
-const url = process.env.REACT_APP_BASE_URL;
+import axios, { authAxios } from "../../../api/config/axios";
 
 export const loginUser = createAsyncThunk(
   "login/user",
@@ -12,16 +11,11 @@ export const loginUser = createAsyncThunk(
     formLogin.append("email", userData.email);
     formLogin.append("password", userData.password);
 
-    try {
-      const loginAccess = await axios.post(`${url}auth/login`, formLogin);
+    const loginAccess = await axios.post(`auth/login`, formLogin);
 
-      let token= loginAccess.data.data;
-
-      localStorage.setItem('token', token)
-      return token
-    } catch (err) {
-      console.log(err);
-    }
+    let token = loginAccess.data.data;
+    localStorage.setItem("token", token);
+    return token;
   }
 );
 
@@ -35,118 +29,68 @@ export const registerUser = createAsyncThunk(
     password: string;
     confirmpassword: string;
   }) => {
-    try {
-      const formRegister = new FormData();
+    const formRegister = new FormData();
 
-      formRegister.append("username", registerData.username);
-      formRegister.append("name", registerData.name);
-      formRegister.append("lastname", registerData.lastname);
-      formRegister.append("email", registerData.email);
-      formRegister.append("password", registerData.password);
-      formRegister.append("password_confirmation", registerData.password);
+    formRegister.append("username", registerData.username);
+    formRegister.append("name", registerData.name);
+    formRegister.append("lastname", registerData.lastname);
+    formRegister.append("email", registerData.email);
+    formRegister.append("password", registerData.password);
+    formRegister.append("password_confirmation", registerData.password);
 
-      const createNewUser = await axios.postForm(
-        url + "auth/register",
-        formRegister
-      );
+    const createNewUser = await axios.postForm("auth/register", formRegister);
 
-      console.log(createNewUser);
-      return createNewUser;
-    } catch (err) {
-      console.log(err);
-    }
+    console.log(createNewUser);
+    return createNewUser;
   }
 );
 
-export const getUsers = createAsyncThunk(
-  "getUsers/user",
-  async (token: string) => {
-    try {
-      const profile = await axios.get(`${url}users`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-
-      return profile.data.data;
-    } catch (err) {
-      console.log(err);
-    }
-  }
-);
+export const getUsers = createAsyncThunk("getUsers/user", async () => {
+  const profile = await authAxios.get(`users`);
+  return profile.data.data;
+});
 
 export const getMyProfile = createAsyncThunk(
   "profile/user",
   async (token: string) => {
-    try {
-      const profile = await axios.get(`${url}users/my-user`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-
-      localStorage.setItem('token', token)
-      return profile.data.data;
-    } catch (err) {
-      console.log(err);
-    }
+    const profile = await authAxios.get(`users/my-user`);
+    token && localStorage.setItem("token", token);
+    return profile.data.data;
   }
 );
 
 export const postNewReport = createAsyncThunk(
   "create/report",
-  async (reportData: { token: string; description: string; image: string }) => {
-    try {
-      const report = new FormData();
+  async (reportData: { description: string; image: string }) => {
+    const report = new FormData();
 
-      report.append("description", reportData.description);
-      report.append("image", reportData.image);
-      const createNewReport = await axios.post(url + "report/save", report, {
-        headers: {
-          Authorization: `Bearer ${reportData.token}`,
-        },
-      });
+    report.append("description", reportData.description);
+    report.append("image", reportData.image);
+    const createNewReport = await authAxios.post("report/save", report);
 
-      return createNewReport;
-    } catch (err) {
-      console.log(err);
-    }
+    return createNewReport;
   }
 );
 
-export const getReports = createAsyncThunk(
-  "getAll/report",
-  async (token: string) => {
-    try {
-      const profile = await axios.get(`${url}report`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+export const getReports = createAsyncThunk("getAll/report", async () => {
+  const profile = await authAxios.get(`report`);
 
-      return profile.data.data;
-    } catch (err) {
-      console.log(err);
-    }
-  }
-);
+  return profile.data.data;
+});
 
 export const updateReportStatus = createAsyncThunk(
   "update/statusreport",
-  async (reportData: { token: string; id: string; status: string }) => {
-    try {
-      const report = new URLSearchParams();
+  async (reportData: { id: string; status: string }) => {
+    const report = new URLSearchParams();
 
-      report.append("status", reportData.status);
+    report.append("status", reportData.status);
 
-      const createNewReport = await axios.put(
-        url + "report/status/" + reportData.id,
-        report,
-        {
-          headers: {
-            Authorization: `Bearer ${reportData.token}`,
-          },
-        }
-      );
+    const createNewReport = await authAxios.put(
+      "report/status/" + reportData.id,
+      report
+    );
 
-      return createNewReport;
-    } catch (err) {
-      console.log(err);
-    }
+    return createNewReport;
   }
 );
 
@@ -264,7 +208,7 @@ export const userSlice = createSlice({
           },
         ],
       };
-      window.location.href='/'
+      window.location.href = "/";
     },
   },
   extraReducers: (builder) => {
@@ -288,7 +232,7 @@ export const userSlice = createSlice({
         state.successMyProfile = true;
         state.pendingMyProfile = false;
         state.dataMyProfile = action.payload;
-        state.payloadLogin = localStorage.getItem('token')
+        state.payloadLogin = localStorage.getItem("token");
       })
       .addCase(getMyProfile.pending, (state) => {
         state.pendingMyProfile = true;
