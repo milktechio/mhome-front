@@ -5,6 +5,7 @@ import ReportsAdmin from "@/features/Pages/Admin/Reports/Reports";
 import Payments from "@/features/Pages/Admin/Payments/Payments";
 import Register from "../features/Register/Register";
 import HomeUser from "@/features/Pages/User/Home/HomeUser";
+import Products from "@/features/Pages/Admin/Products";
 import ProfileUser from "@/features/Pages/User/Profile/ProfileUser";
 import PaymentsUser from "@/features/Pages/User/Payments/PaymentsUser";
 import ReportsUser from "@/features/Pages/User/Reports/Reports";
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "admin-payments",
         element: <Payments />,
+      },
+            {
+        path: "admin-products",
+        element: <Products />,
       },
       {
         path: "user-home",
