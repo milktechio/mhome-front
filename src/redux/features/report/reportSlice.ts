@@ -1,9 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { UserDataType } from "../../../utils/types/user.types";
 
 import axios, { authAxios } from "../../../api/config/axios";
-
-
 
 export const postNewReport = createAsyncThunk(
   "create/report",
@@ -21,6 +18,7 @@ export const postNewReport = createAsyncThunk(
 export const getReports = createAsyncThunk("getAll/report", async () => {
   const profile = await authAxios.get(`report`);
 
+  console.log(profile);
   return profile.data.data;
 });
 
@@ -41,7 +39,6 @@ export const updateReportStatus = createAsyncThunk(
 );
 
 type initialState = {
-
   successPostReport: boolean;
   pendingPostReport: boolean;
   rejectedPostReport: boolean;
@@ -57,8 +54,6 @@ type initialState = {
 };
 
 const initialState: initialState = {
-
-
   successPostReport: false,
   pendingPostReport: false,
   rejectedPostReport: false,
@@ -76,9 +71,7 @@ const initialState: initialState = {
 export const reportSlice = createSlice({
   name: "report",
   initialState,
-  reducers: {
-    
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(postNewReport.fulfilled, (state) => {
@@ -114,6 +107,5 @@ export const reportSlice = createSlice({
       });
   },
 });
-
 
 export default reportSlice.reducer;

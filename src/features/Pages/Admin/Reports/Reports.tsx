@@ -19,7 +19,7 @@ const Reports = () => {
   const dispatch = useAppDispatch();
 
   const screen = useScreenDimentions();
-  const reports = useAppSelector((state) => state.reports.dataGetReports);
+  const reports = useAppSelector((state) => state.report.dataGetReports);
 
   const filteredReports = reports?.map((report: any, index: number) => {
     return {

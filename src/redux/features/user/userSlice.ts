@@ -13,7 +13,7 @@ export const loginUser = createAsyncThunk(
 
     const loginAccess = await axios.post(`auth/login`, formLogin);
 
-    let token = loginAccess.data.data;
+    const token = loginAccess.data.data;
     localStorage.setItem("token", token);
     return token;
   }
@@ -58,8 +58,6 @@ export const getMyProfile = createAsyncThunk(
     return profile.data.data;
   }
 );
-
-
 
 type initialState = {
   successLogin: boolean;
@@ -117,7 +115,6 @@ const initialState: initialState = {
   pendingGetUsers: false,
   rejectedGetUsers: false,
   dataGetUsers: [],
-
 };
 
 export const userSlice = createSlice({
@@ -192,8 +189,7 @@ export const userSlice = createSlice({
       })
       .addCase(getUsers.rejected, (state) => {
         state.rejectedGetUsers = true;
-      })
-
+      });
   },
 });
 
