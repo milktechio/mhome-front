@@ -1,4 +1,4 @@
-import { postNewReport } from "@/redux/features/user/userSlice";
+import { postNewReport } from "@/redux/features/report/reportSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 import { useEffect, useState } from "react";
 import Card from "@/Components/Card/Card";

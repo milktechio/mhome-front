@@ -1,4 +1,4 @@
-import { postNewReport } from "@/redux/features/user/userSlice";
+import { postNewReport } from "@/redux/features/report/reportSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 import { useEffect, useState } from "react";
 import Card from "@/Components/Card/Card";
@@ -15,10 +15,8 @@ const ModalCreateReport = ({
   const [image, setImage] = useState<FileList>(null);
   const dispatch = useAppDispatch();
 
-  const token = useAppSelector((state) => state.user.payloadLogin);
 
   const report = {
-    token: token,
     description: description,
     image: image,
   };

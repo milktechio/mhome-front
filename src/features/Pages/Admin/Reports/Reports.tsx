@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useScreenDimentions } from "@/utils/hooks/screenDimentions";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
-import { getReports } from "@/redux/features/user/userSlice";
+import { getReports } from "@/redux/features/report/reportSlice";
 import InputSearch from "@/Components/Inputs/InputSearch/InputSearch";
 import Table from "@/Components/Table/Table";
 import PageContentDist from "@/layouts/PageContentDist/PageContentDist";
@@ -19,8 +19,7 @@ const Reports = () => {
   const dispatch = useAppDispatch();
 
   const screen = useScreenDimentions();
-  const token = useAppSelector((state) => state.user.payloadLogin);
-  const reports = useAppSelector((state) => state.user.dataGetReports);
+  const reports = useAppSelector((state) => state.reports.dataGetReports);
 
   const filteredReports = reports?.map((report: any, index: number) => {
     return {
@@ -40,8 +39,8 @@ const Reports = () => {
   };
 
   useEffect(() => {
-    dispatch(getReports(token));
-  }, [dispatch, token]);
+    dispatch(getReports());
+  }, [dispatch ]);
 
   return (
     <PageContentDist>

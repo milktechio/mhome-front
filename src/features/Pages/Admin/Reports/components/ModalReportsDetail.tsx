@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { updateReportStatus } from "@/redux/features/user/userSlice";
+import { updateReportStatus } from "@/redux/features/report/reportSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 import Modal from "@/Components/Modal/Modal";
 
@@ -14,7 +14,6 @@ const ModalReportsDetail = ({
 }) => {
   const [selectedOption, setSelectedOption] = useState("");
 
-  const token = useAppSelector((state) => state.user.payloadLogin);
 
   const dispatch = useAppDispatch();
 
@@ -42,7 +41,6 @@ const ModalReportsDetail = ({
             handler={() => {
               dispatch(
                 updateReportStatus({
-                  token: token,
                   id: show[0]?.id,
                   status: selectedOption,
                 })
