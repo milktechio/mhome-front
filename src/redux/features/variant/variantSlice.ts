@@ -1,19 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios, { authAxios } from "../../../api/config/axios";
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify';
+
 // Crear una nueva variante
 export const postNewVariant = createAsyncThunk(
   "create/variant",
   async (variantData: any) => {
     const variant = new FormData();
-
-
-    for(let k in variantData){
-      variant.append(k, variantData[k])
+    for (let k in variantData) {
+      variant.append(k, variantData[k]);
     }
-
     const createNewVariant = await authAxios.post("variant/save", variant);
-    toast.success("Creado correctamente", {'theme':"dark"})
+    toast.success("Creado correctamente", { 'theme': "dark" });
     return createNewVariant.data;
   }
 );
@@ -52,7 +50,16 @@ export const deleteVariant = createAsyncThunk(
   }
 );
 
-type initialState = {
+// Obtener enlace de variante
+export const getVariantLink = createAsyncThunk(
+  "get/variantLink",
+  async (variantId: string) => {
+    const response = await authAxios.get(`variant/${variantId}/link`);
+    return response.data.data;
+  }
+);
+
+type InitialState = {
   successPostVariant: boolean;
   pendingPostVariant: boolean;
   rejectedPostVariant: boolean;
@@ -69,9 +76,14 @@ type initialState = {
   successDeleteVariant: boolean;
   pendingDeleteVariant: boolean;
   rejectedDeleteVariant: boolean;
+
+  successGetVariantLink: boolean;
+  pendingGetVariantLink: boolean;
+  rejectedGetVariantLink: boolean;
+  dataGetVariantLink: any; // Define según el tipo esperado
 };
 
-const initialState: initialState = {
+const initialState: InitialState = {
   successPostVariant: false,
   pendingPostVariant: false,
   rejectedPostVariant: false,
@@ -88,6 +100,11 @@ const initialState: initialState = {
   successDeleteVariant: false,
   pendingDeleteVariant: false,
   rejectedDeleteVariant: false,
+
+  successGetVariantLink: false,
+  pendingGetVariantLink: false,
+  rejectedGetVariantLink: false,
+  dataGetVariantLink: null, // Asignar valor inicial según el tipo esperado
 };
 
 export const variantSlice = createSlice({
@@ -141,6 +158,19 @@ export const variantSlice = createSlice({
       })
       .addCase(deleteVariant.rejected, (state) => {
         state.rejectedDeleteVariant = true;
+      })
+
+      // Obtener enlace de variante
+      .addCase(getVariantLink.fulfilled, (state, action) => {
+        state.successGetVariantLink = true;
+        console.log('a',action.payload)
+        state.dataGetVariantLink = action.payload;
+      })
+      .addCase(getVariantLink.pending, (state) => {
+        state.pendingGetVariantLink = true;
+      })
+      .addCase(getVariantLink.rejected, (state) => {
+        state.rejectedGetVariantLink = true;
       });
   },
 });

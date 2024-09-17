@@ -61,16 +61,23 @@ export const linksSideBarUser: NavLinks[] = [
     icon: neighbors,
     iconNegative: neighborsN,
   },
-  
+    
   {
     id: 3,
+    name: "Membresias",
+    link: "user-membership",
+    icon: payments,
+    iconNegative: paymentsN,
+  },
+  {
+    id: 4,
     name: "Pagos",
     link: "user-payments",
     icon: payments,
     iconNegative: paymentsN,
   },
   {
-    id: 4,
+    id: 5,
     name: "Reportes",
     link: "user-reports",
     icon: reports,

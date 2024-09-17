@@ -7,6 +7,8 @@ import Register from "../features/Register/Register";
 import HomeUser from "@/features/Pages/User/Home/HomeUser";
 import Products from "@/features/Pages/Admin/Products";
 import Variants from "@/features/Pages/Admin/Variants";
+import ProductsUser from "@/features/Pages/User/Products";
+import VariantsUser from "@/features/Pages/User/Variants";
 import ProfileUser from "@/features/Pages/User/Profile/ProfileUser";
 import PaymentsUser from "@/features/Pages/User/Payments/PaymentsUser";
 import ReportsUser from "@/features/Pages/User/Reports/Reports";
@@ -62,6 +64,15 @@ const router = createBrowserRouter([
         path: "user-reports",
         element: <ReportsUser />,
       },
+      {
+        path: "user-membership",
+        element: <ProductsUser />,
+      },
+            {
+        path: "user-membership/:id",
+        element: <VariantsUser />,
+      },
+
     ],
   },
 ]);
