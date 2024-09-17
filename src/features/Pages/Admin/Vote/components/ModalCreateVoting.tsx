@@ -2,7 +2,7 @@ import Card from "@/Components/Card/Card";
 import Modal from "@/Components/Modal/Modal";
 import { createVoting } from "@/redux/features/vote/voteSlice";
 import { useAppDispatch } from "@/redux/hooks/hooks";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const ModalCreateVoting = ({
   modal,
@@ -11,19 +11,25 @@ const ModalCreateVoting = ({
   modal?: string;
   close?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
-  const [data, setData] = useState<any>({
-    title: "",
-    description: "",
-    options: "",
-    minimum_participations: "",
-    status: "",
-    date_end: "",
-    image: FileList,
-  });
-
-  console.log(data);
+  const [title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [options, setOption] = useState<string>("");
+  const [minimum, setMinimun] = useState<string>("");
+  const [status, setStatus] = useState<string>("");
+  const [dateEnd, setDateEnd] = useState<string>("");
+  const [image, setImage] = useState<string>("");
 
   const dispatch = useAppDispatch();
+
+  const data = {
+    title: title,
+    description: description,
+    options: options,
+    minimum_participations: minimum,
+    status: status,
+    date_end: dateEnd,
+    image: image,
+  };
 
   return (
     <>
@@ -36,38 +42,36 @@ const ModalCreateVoting = ({
                 <Card.Input
                   text="titulo"
                   placeholderText={"titulo"}
-                  handler={(e) => setData({ title: e.target.value })}
+                  handler={(e) => setTitle(e.target.value)}
                 />
                 <Card.Input
-                  text="name"
+                  text="description"
                   placeholderText={"descripcion"}
-                  handler={(e) => setData({ description: e.target.value })}
+                  handler={(e) => setDescription(e.target.value)}
                 />
                 <Card.Input
                   text="lastname"
                   placeholderText={"opciones"}
-                  handler={(e) => setData({ options: e.target.value })}
+                  handler={(e) => setOption(e.target.value)}
                 />
                 <Card.Input
-                  text="email"
+                  text="participaciones minimas"
                   placeholderText={"participaciones minimas"}
-                  handler={(e) =>
-                    setData({ minimum_participations: e.target.value })
-                  }
+                  handler={(e) => setMinimun(e.target.value)}
                 />
                 <Card.Input
-                  text="password"
+                  text="status"
                   placeholderText={"status"}
-                  handler={(e) => setData({ status: e.target.value })}
+                  handler={(e) => setStatus(e.target.value)}
                 />
                 <Card.Input
                   text="termina"
                   placeholderText={"termina"}
-                  handler={(e) => setData({ date_end: e.target.value })}
+                  handler={(e) => setDateEnd(e.target.value)}
                 />
                 <Card.UpLoadFile
                   handler={(e) => {
-                    setData({ image: e?.target?.files[0] });
+                    setImage(e?.target?.files[0]);
                   }}
                 />
               </Card.Body>

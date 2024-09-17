@@ -10,7 +10,7 @@ export const createVoting = createAsyncThunk(
     minimum_participations: string;
     status: string;
     date_end: string;
-    image: string;
+    image: any;
   }) => {
     const voting = new FormData();
 
@@ -22,9 +22,10 @@ export const createVoting = createAsyncThunk(
     voting.append("date_end", votingData.date_end);
     voting.append("image", votingData.image);
 
+    console.log(voting.get("minimum_participations"));
     const createNewVoting = await authAxios.post("vote", voting);
 
-    return createNewVoting;
+    return createNewVoting.data;
   }
 );
 

@@ -23,9 +23,9 @@ const ModalCreateReport = ({
     image: image,
   };
 
-  useEffect(() => {
-    console.log(image);
-  }, [image]);
+  // useEffect(() => {
+  //   console.log(image);
+  // }, [image]);
 
   return (
     <>

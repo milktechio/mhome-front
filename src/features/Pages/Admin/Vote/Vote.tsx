@@ -17,7 +17,7 @@ const Vote = () => {
   const screen = useScreenDimentions();
   const dispatch = useAppDispatch();
 
-  const voting = useAppSelector((state) => state.vote.dataGetVotes);
+  const voting = useAppSelector((state) => state.vote.dataGetVotes.data);
 
   useEffect(() => {
     dispatch(getVotes());
@@ -51,7 +51,7 @@ const Vote = () => {
         )}
       </PageContentDist.Header>
       <PageContentDist.Main>
-        <ListDataMobile headers={["Titulo", "Comunidad"]} tableData={Data} />
+        <ListDataMobile headers={["Titulo", "Comunidad"]} tableData={voting} />
       </PageContentDist.Main>
     </PageContentDist>
   );

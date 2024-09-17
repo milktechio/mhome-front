@@ -18,7 +18,7 @@ const ModalCreateVoting = ({
     minimum_participations: "",
     status: "",
     date_end: "",
-    image: FileList,
+    image: null,
   });
 
   console.log(data);
