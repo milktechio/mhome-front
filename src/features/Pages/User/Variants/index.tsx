@@ -18,7 +18,7 @@ const Neighbors = () => {
   const [modal, setModal] = useState<string>("");
 
   const screen = useScreenDimentions();
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch(); 
 
   const variants = useAppSelector((state) =>
     state?.variant?.dataGetVariants
