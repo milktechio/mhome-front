@@ -12,7 +12,7 @@ const Header = ({ children }: { children: ReactNode }) => {
 const HeaderTitle = ({ title }: { title: string }) => {
   return (
     <div className={styles.header__title}>
-      <h2>{title}</h2>
+      <h3>{title}</h3>
     </div>
   );
 };

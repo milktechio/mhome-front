@@ -24,7 +24,6 @@ function App() {
   const token = useAppSelector((state) => state.user.payloadLogin);
   const profile = useAppSelector((state) => state.user.dataMyProfile);
   const profileSuccess = useAppSelector((state) => state.user.successMyProfile);
-  const profilePending = useAppSelector((state) => state.user.pendingMyProfile);
   const [loading, setLoading] = useState(true);
 
   const getTokenHandler = () => {
@@ -39,8 +38,7 @@ function App() {
       let tryDecode = async () => jwtDecode(tokenStoraged);
 
       tryDecode()
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           dispatch(getMyProfile(tokenStoraged));
         })
         .catch(() => setLoading(false));

@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios, { authAxios } from "@/api/config/axios";
 import { UserDataType } from "../../../utils/types/user.types";
-
-import axios, { authAxios } from "../../../api/config/axios";
 
 export const loginUser = createAsyncThunk(
   "login/user",
@@ -40,7 +39,6 @@ export const registerUser = createAsyncThunk(
 
     const createNewUser = await axios.postForm("auth/register", formRegister);
 
-    console.log(createNewUser);
     return createNewUser;
   }
 );

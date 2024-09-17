@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
-import axios, { authAxios } from "../../../api/config/axios";
+import { authAxios } from "@/api/config/axios";
 
 export const postNewReport = createAsyncThunk(
   "create/report",

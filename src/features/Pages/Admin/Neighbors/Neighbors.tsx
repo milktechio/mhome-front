@@ -41,7 +41,7 @@ const Neighbors = () => {
   };
 
   useEffect(() => {
-    dispatch(getUsers(token));
+    dispatch(getUsers());
   }, [dispatch, token]);
 
   return (
@@ -67,7 +67,16 @@ const Neighbors = () => {
             <InputSearch />
           </>
         )}
-        {screen.width <= 768 && <ButtonSquare />}
+        {screen.width <= 768 && (
+          <>
+            <ButtonSquare
+              handler={() => {
+                setModal("register");
+              }}
+            />
+            <ButtonSquare />
+          </>
+        )}
       </PageContentDist.Header>
       <PageContentDist.Main>
         {screen.width > 768 && (

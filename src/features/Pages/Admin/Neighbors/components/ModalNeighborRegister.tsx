@@ -1,10 +1,49 @@
 import { useAppDispatch } from "@/redux/hooks/hooks";
 import { useState, useEffect } from "react";
 import { registerUser } from "@/redux/features/user/userSlice";
-import Card from "@/Components/Card/Card";
 import Modal from "@/Components/Modal/Modal";
-import PageContentDist from "@/layouts/PageContentDist/PageContentDist";
-import Builder from '@/Components/forms'
+import Card from "@/Components/Card/Card";
+
+const fields = [
+  {
+    name: "username",
+    label: "Nombre de usuario",
+    defaultValue: "",
+    required: true,
+  },
+  {
+    name: "name",
+    label: "Nombre",
+    defaultValue: "",
+    required: true,
+  },
+  {
+    name: "lastname",
+    label: "Apellido",
+    defaultValue: "",
+    required: true,
+  },
+  {
+    name: "email",
+    label: "Correo electrónico",
+    defaultValue: "",
+    required: true,
+  },
+  {
+    name: "password",
+    label: "Contraseña",
+    defaultValue: "",
+    required: true,
+    password: true,
+  },
+  {
+    name: "confirmPasword",
+    label: "Confirmar contraseña",
+    defaultValue: "",
+    password: true,
+    required: true,
+  },
+];
 
 const ModalNeighborRegister = ({
   modal,
@@ -13,65 +52,16 @@ const ModalNeighborRegister = ({
   modal?: string;
   close?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
- const [fields, setFields] = useState<[]>([]);
- const [data, setData] = useState<any>({});
-
-
-
-  useEffect(()=>{
-
-    setFields([
-      {
-        name: 'username',
-        label: 'Nombre de usuario',
-        defaultValue: '',
-        required: true,
-      },
-      {
-        name: 'name',
-        label: 'Nombre',
-        defaultValue: '',
-        required: true,
-      },
-      {
-        name: 'lastname',
-        label: 'Apellido',
-        defaultValue: '',
-        required: true,
-      },
-      {
-        name: 'email',
-        label: 'Correo electrónico',
-        defaultValue: '',
-        required: true,
-      },
-      {
-        name: 'password',
-        label: 'Contraseña',
-        defaultValue: '',
-        required: true,
-        password:true,
-      },
-      {
-        name: 'confirmPasword',
-        label: 'Confirmar contraseña',
-        defaultValue: '',
-        password:true,
-        required: true,
-      },
-    ]);
-
-
-  },[])
-
-
-  useEffect(()=>{
-    console.log(data)
-
-  },[data])
+  const [data, setData] = useState<any>({
+    username: "",
+    name: "",
+    lastname: "",
+    email: "",
+    password: "",
+    confirmpasword: "",
+  });
 
   const dispatch = useAppDispatch();
-
 
   return (
     <>
@@ -79,13 +69,40 @@ const ModalNeighborRegister = ({
         <Modal>
           <Modal.Header text="Registra a un vecino" />
           <Modal.Body>
-            <PageContentDist>
-              <PageContentDist.Main>
-               <div className="w-100">
-                <Builder fields={fields} onChange={setData} />
-                </div>                
-              </PageContentDist.Main>
-            </PageContentDist>
+            <Card>
+              <Card.Body>
+                <Card.Input
+                  text="username"
+                  placeholderText={"username"}
+                  handler={(e) => setData({ username: e.target.value })}
+                />
+                <Card.Input
+                  text="name"
+                  placeholderText={"name"}
+                  handler={(e) => setData({ name: e.target.value })}
+                />
+                <Card.Input
+                  text="lastname"
+                  placeholderText={"lastname"}
+                  handler={(e) => setData({ lastname: e.target.value })}
+                />
+                <Card.Input
+                  text="email"
+                  placeholderText={"email"}
+                  handler={(e) => setData({ name: e.target.value })}
+                />
+                <Card.Input
+                  text="password"
+                  placeholderText={"password"}
+                  handler={(e) => setData({ name: e.target.value })}
+                />
+                <Card.Input
+                  text="confirm password"
+                  placeholderText={"confirm password"}
+                  handler={(e) => setData({ name: e.target.value })}
+                />
+              </Card.Body>
+            </Card>
           </Modal.Body>
           <Modal.Footer
             text="Registrar"
