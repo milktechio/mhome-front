@@ -27,8 +27,8 @@ export const linksSideBarAdmin: NavLinks[] = [
     id: 3,
     name: "Membresias",
     link: "admin-membership",
-    icon: neighbors,
-    iconNegative: neighborsN,
+    icon: payments,
+    iconNegative: paymentsN,
   },
   {
     id: 4,
@@ -37,13 +37,13 @@ export const linksSideBarAdmin: NavLinks[] = [
     icon: reports,
     iconNegative: reportsN,
   },
-  {
-    id: 5,
-    name: "Pagos",
-    link: "admin-payments",
-    icon: payments,
-    iconNegative: paymentsN,
-  },
+  // {
+  //   id: 5,
+  //   name: "Pagos",
+  //   link: "admin-payments",
+  //   icon: payments,
+  //   iconNegative: paymentsN,
+  // },
   {
     id: 6,
     name: "Votos",
@@ -68,7 +68,6 @@ export const linksSideBarUser: NavLinks[] = [
     icon: neighbors,
     iconNegative: neighborsN,
   },
-    
 
   {
     id: 3,
@@ -77,13 +76,13 @@ export const linksSideBarUser: NavLinks[] = [
     icon: payments,
     iconNegative: paymentsN,
   },
-  {
-    id: 4,
-    name: "Pagos",
-    link: "user-payments",
-    icon: payments,
-    iconNegative: paymentsN,
-  },
+  // {
+  //   id: 4,
+  //   name: "Pagos",
+  //   link: "user-payments",
+  //   icon: payments,
+  //   iconNegative: paymentsN,
+  // },
   {
     id: 5,
     name: "Reportes",
@@ -92,7 +91,7 @@ export const linksSideBarUser: NavLinks[] = [
     iconNegative: reportsN,
   },
   {
-    id: 4,
+    id: 6,
     name: "Votos",
     link: "user-voting",
     icon: reports,

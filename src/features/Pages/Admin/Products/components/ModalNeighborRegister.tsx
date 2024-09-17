@@ -12,7 +12,7 @@ const ModalNeighborRegister = ({
   modal?: string;
   close?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
-  const [fields, setFields] = useState<[]>([]);
+  const [fields, setFields] = useState<any>([]);
   const [data, setData] = useState<any>({});
 
   useEffect(() => {

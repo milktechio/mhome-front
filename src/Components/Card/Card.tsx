@@ -4,6 +4,7 @@ import InputSimple from "../Inputs/InputSimple/InputSimple";
 import ButtonPrimary from "../Buttons/ButtonPrimary/ButtonPrimary";
 import { InputDataType } from "@/utils/types/inputData.types";
 import { ButtonPrimaryType } from "@/utils/types/button.types";
+import { useScreenDimentions } from "@/utils/hooks/screenDimentions";
 
 const Card = ({ children }: { children: ReactNode }) => {
   return <div className={styles.cardContainer}>{children}</div>;
@@ -39,9 +40,10 @@ const Input = ({
   placeholderText,
   handler,
 }: InputDataType) => {
+  const screen = useScreenDimentions();
   return (
     <div className={styles.cardContainer__input}>
-      <p>{text}</p>
+      {screen.width > 768 && <p>{text}</p>}
       <InputSimple
         inputValue={inputValue}
         placeholderText={placeholderText}

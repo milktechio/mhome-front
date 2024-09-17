@@ -42,13 +42,12 @@ const router = createBrowserRouter([
         path: "admin-payments",
         element: <Payments />,
       },
-      {
-        path: "admin-products",
+
       {
         path: "admin-membership",
         element: <Products />,
       },
-            {
+      {
         path: "admin-membership/:id",
         element: <Variants />,
       },
@@ -80,11 +79,10 @@ const router = createBrowserRouter([
         path: "user-membership",
         element: <ProductsUser />,
       },
-            {
+      {
         path: "user-membership/:id",
         element: <VariantsUser />,
       },
-
     ],
   },
 ]);
