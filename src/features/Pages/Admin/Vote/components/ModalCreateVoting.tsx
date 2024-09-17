@@ -1,18 +1,16 @@
-import { useAppDispatch } from "@/redux/hooks/hooks";
-import { useState, useEffect } from "react";
-import { registerUser } from "@/redux/features/user/userSlice";
+import Builder from "@/Components/forms";
 import Modal from "@/Components/Modal/Modal";
 import PageContentDist from "@/layouts/PageContentDist/PageContentDist";
-import Builder from "@/Components/forms";
+import React, { useEffect, useState } from "react";
 
-const ModalNeighborRegister = ({
+const ModalCreateVoting = ({
   modal,
   close,
 }: {
   modal?: string;
   close?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
-  const [fields, setFields] = useState<[]>([]);
+  const [fields, setFields] = useState<any>([]);
   const [data, setData] = useState<any>({});
 
   useEffect(() => {
@@ -58,37 +56,23 @@ const ModalNeighborRegister = ({
     ]);
   }, []);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
-  const dispatch = useAppDispatch();
-
-  const handleSubmit = (data) => {};
-
   return (
     <>
-      {modal === "register" && (
+      {modal === "voting" && (
         <Modal>
-          <Modal.Header text="Registra a un vecino" />
+          <Modal.Header text="CREAR VOTACION" />
           <Modal.Body>
             <PageContentDist>
               <PageContentDist.Main>
-                <div className="w-100">
-                  <Builder fields={fields} onChange={setData} />
-                </div>
+                
               </PageContentDist.Main>
             </PageContentDist>
           </Modal.Body>
-          <Modal.Footer
-            text="Registrar"
-            handler={() => dispatch(registerUser(data))}
-            close={close}
-          />
+          <Modal.Footer text="Registrar" handler={() => {}} close={close} />
         </Modal>
       )}
     </>
   );
 };
 
-export default ModalNeighborRegister;
+export default ModalCreateVoting;

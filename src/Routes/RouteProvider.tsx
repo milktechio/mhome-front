@@ -10,6 +10,8 @@ import ProfileUser from "@/features/Pages/User/Profile/ProfileUser";
 import PaymentsUser from "@/features/Pages/User/Payments/PaymentsUser";
 import ReportsUser from "@/features/Pages/User/Reports/Reports";
 import App from "@/features/App/App";
+import VoteUser from "@/features/Pages/User/Vote/Vote";
+import Vote from "@/features/Pages/Admin/Vote/Vote";
 
 const router = createBrowserRouter([
   {
@@ -37,9 +39,13 @@ const router = createBrowserRouter([
         path: "admin-payments",
         element: <Payments />,
       },
-            {
+      {
         path: "admin-products",
         element: <Products />,
+      },
+      {
+        path: "admin-voting",
+        element: <Vote />,
       },
       {
         path: "user-home",
@@ -56,6 +62,10 @@ const router = createBrowserRouter([
       {
         path: "user-reports",
         element: <ReportsUser />,
+      },
+      {
+        path: "user-voting",
+        element: <VoteUser />,
       },
     ],
   },

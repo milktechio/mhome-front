@@ -44,6 +44,13 @@ export const linksSideBarAdmin: NavLinks[] = [
     icon: payments,
     iconNegative: paymentsN,
   },
+  {
+    id: 6,
+    name: "Votos",
+    link: "admin-voting",
+    icon: payments,
+    iconNegative: paymentsN,
+  },
 ];
 
 export const linksSideBarUser: NavLinks[] = [
@@ -61,7 +68,7 @@ export const linksSideBarUser: NavLinks[] = [
     icon: neighbors,
     iconNegative: neighborsN,
   },
-  
+
   {
     id: 3,
     name: "Pagos",
@@ -73,6 +80,13 @@ export const linksSideBarUser: NavLinks[] = [
     id: 4,
     name: "Reportes",
     link: "user-reports",
+    icon: reports,
+    iconNegative: reportsN,
+  },
+  {
+    id: 4,
+    name: "Votos",
+    link: "user-voting",
     icon: reports,
     iconNegative: reportsN,
   },

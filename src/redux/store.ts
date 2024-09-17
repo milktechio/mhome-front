@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userStateReducer from "./features/user/userSlice";
 import reportStateReducer from "./features/report/reportSlice";
+import voteStateReducer from "./features/vote/voteSlice";
 
 export const store = configureStore({
   reducer: {
     user: userStateReducer,
     report: reportStateReducer,
+    vote: voteStateReducer,
   },
 });
 

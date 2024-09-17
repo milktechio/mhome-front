@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useScreenDimentions } from "@/utils/hooks/screenDimentions";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
@@ -18,7 +17,6 @@ const Neighbors = () => {
   const screen = useScreenDimentions();
   const dispatch = useAppDispatch();
 
-  const token = useAppSelector((state) => state.user.payloadLogin);
   const users = useAppSelector((state) =>
     state?.user?.dataGetUsers
       .map((el) => {
@@ -42,8 +40,8 @@ const Neighbors = () => {
   };
 
   useEffect(() => {
-    dispatch(getUsers(token));
-  }, [dispatch, token]);
+    dispatch(getUsers());
+  }, [dispatch]);
 
   return (
     <PageContentDist>

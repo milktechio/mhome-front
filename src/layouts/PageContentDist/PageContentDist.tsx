@@ -12,7 +12,7 @@ const Header = ({ children }: { children: ReactNode }) => {
 const HeaderTitle = ({ title }: { title: string }) => {
   return (
     <div className={styles.header__title}>
-      <h2>{title}</h2>
+      <h3>{title}</h3>
     </div>
   );
 };
@@ -22,7 +22,11 @@ const HeaderButtons = ({ children }: { children: ReactNode }) => {
 };
 
 const Main = ({ children }: { children: ReactNode }) => {
-  return <div className={styles.main}>{children}</div>;
+  return (
+    <div style={{ overflow: "scroll" }} className={styles.main}>
+      {children}
+    </div>
+  );
 };
 
 PageContentDist.Header = Header;

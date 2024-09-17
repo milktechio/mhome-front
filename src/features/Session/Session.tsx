@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { logOut } from "@/redux/features/user/userSlice";
 import { useAppDispatch } from "@/redux/hooks/hooks";
 import { useScreenDimentions } from "@/utils/hooks/screenDimentions";
@@ -8,7 +8,6 @@ import PageSessionLayOut from "@/layouts/PageSessionLayOut/PageSessionLayOut";
 const Session = ({ links }: { links: NavLinks[] }) => {
   const screen = useScreenDimentions();
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const logOutHandler = () => {
     dispatch(logOut());

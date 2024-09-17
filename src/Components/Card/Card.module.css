@@ -21,6 +21,7 @@
 .cardContainer__body {
   display: flex;
   width: 100%;
+  height: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -84,14 +85,15 @@
 @media (max-width: 768px) {
   .cardContainer {
     height: 100%;
+    padding: 5px 0px;
   }
 
   .cardContainer__header {
-    height: 30%;
+    height: 20%;
   }
 
   .cardContainer__body {
-    height: 70%;
+    height: 80%;
     overflow-y: auto;
   }
 

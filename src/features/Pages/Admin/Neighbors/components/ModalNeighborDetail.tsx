@@ -15,7 +15,6 @@ const ModalNeighborDetail = ({
     return e.id === modal;
   });
 
-  console.log("data", show);
   return (
     <>
       {modal === show[0]?.id && (
