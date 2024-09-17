@@ -25,8 +25,8 @@ export const linksSideBarAdmin: NavLinks[] = [
   },
   {
     id: 3,
-    name: "Productos",
-    link: "admin-products",
+    name: "Membresias",
+    link: "admin-membership",
     icon: neighbors,
     iconNegative: neighborsN,
   },

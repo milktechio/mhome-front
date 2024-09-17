@@ -6,6 +6,7 @@ import Payments from "@/features/Pages/Admin/Payments/Payments";
 import Register from "../features/Register/Register";
 import HomeUser from "@/features/Pages/User/Home/HomeUser";
 import Products from "@/features/Pages/Admin/Products";
+import Variants from "@/features/Pages/Admin/Variants";
 import ProfileUser from "@/features/Pages/User/Profile/ProfileUser";
 import PaymentsUser from "@/features/Pages/User/Payments/PaymentsUser";
 import ReportsUser from "@/features/Pages/User/Reports/Reports";
@@ -37,9 +38,13 @@ const router = createBrowserRouter([
         path: "admin-payments",
         element: <Payments />,
       },
-            {
-        path: "admin-products",
+      {
+        path: "admin-membership",
         element: <Products />,
+      },
+            {
+        path: "admin-membership/:id",
+        element: <Variants />,
       },
       {
         path: "user-home",

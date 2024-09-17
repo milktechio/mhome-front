@@ -18,21 +18,11 @@ const ModalNeighborDetail = ({
   console.log("data", show);
   return (
     <>
-      {modal === show[0]?.id && (
+      {modal === show?.[0]?.id && (
         <Modal>
           <Modal.Header text="Vecino" />
           <Modal.Body>
-            <Card>
-              <Card.Avatar image="#" />
-              <Card.Body>
-                <Card.Input placeholderText={show[0]?.name} text="Nombre:" />
-                <Card.Input
-                  placeholderText={show[0]?.mobile}
-                  text="Telefono:"
-                />
-                <Card.Input placeholderText={show[0]?.email} text="Email:" />
-              </Card.Body>
-            </Card>
+            <B
           </Modal.Body>
           <Modal.Footer text="detalle" close={close} />
         </Modal>
