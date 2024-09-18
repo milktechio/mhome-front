@@ -6,10 +6,9 @@ import ButtonPrimary from "@/Components/Buttons/ButtonPrimary/ButtonPrimary";
 import InputSearch from "@/Components/Inputs/InputSearch/InputSearch";
 import ButtonSquare from "@/Components/Buttons/ButtonSquare/ButtonSquare";
 import ModalCreateVoting from "./components/ModalCreateVoting";
-import ModalViewVoteDetail from "./components/ModalViewVoteDetail";
-import ListDataMobile from "@/Components/ListData/ListDataMobile";
 import { getVotes } from "@/redux/features/vote/voteSlice";
-import Data from "./MOCK_DATA (2).json";
+import Lists, { ListItems } from "@/Components/Lists/Lists";
+import ModalViewVoteDetail from "./components/ModalViewVoteDetail";
 
 const Vote = () => {
   const [modal, setModal] = useState<string>("");
@@ -21,13 +20,16 @@ const Vote = () => {
 
   useEffect(() => {
     dispatch(getVotes());
-  }, []);
+  }, [dispatch]);
 
-  console.log(voting);
   return (
     <PageContentDist>
       <ModalCreateVoting modal={modal} close={() => setModal("")} />
-      {/* <ModalViewVoteDetail modal={modal} close={() => setModal("")} /> */}
+      <ModalViewVoteDetail
+        voting={voting ? voting : [""]}
+        modal={modal}
+        close={() => setModal("")}
+      />
       <PageContentDist.Header>
         <PageContentDist.HeaderTitle title="Votaciones" />
         {screen.width > 768 && (
@@ -51,7 +53,21 @@ const Vote = () => {
         )}
       </PageContentDist.Header>
       <PageContentDist.Main>
-        <ListDataMobile headers={["Titulo", "Comunidad"]} tableData={voting} />
+        <Lists>
+          {voting?.map((vote, i) => {
+            return (
+              <ListItems
+                key={`aslkdjf${i}`}
+                handler={() => {
+                  setModal(vote?.id);
+                }}
+                image={vote?.image}
+                dateEnd={vote?.date_end}
+                title={vote?.title}
+              />
+            );
+          })}
+        </Lists>
       </PageContentDist.Main>
     </PageContentDist>
   );

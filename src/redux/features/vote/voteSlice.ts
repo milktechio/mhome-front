@@ -22,7 +22,6 @@ export const createVoting = createAsyncThunk(
     voting.append("date_end", votingData.date_end);
     voting.append("image", votingData.image);
 
-    console.log(voting.get("minimum_participations"));
     const createNewVoting = await authAxios.post("vote", voting);
 
     return createNewVoting.data;
@@ -36,8 +35,8 @@ export const getVotes = createAsyncThunk("get/votes", async () => {
 });
 
 export const getVoting = createAsyncThunk("get/voting", async (id: string) => {
-  const voting = await authAxios.get(`vote/${id}`);
-
+  const voting = await authAxios.get(`vote/${id}/result`);
+  console.log(voting.data);
   return voting.data;
 });
 
@@ -58,6 +57,18 @@ export const updateVoteStatus = createAsyncThunk(
     const updateVote = await authAxios.put("vote/" + voteData.id, vote);
 
     return updateVote;
+  }
+);
+
+export const postVote = createAsyncThunk(
+  "post/vote",
+  async (voteData: { id: string; option: string }) => {
+    const vote = new URLSearchParams();
+    vote.append("status", voteData.id);
+    vote.append("status", voteData.option);
+    const postVote = await authAxios.post("voting", vote);
+
+    return postVote.data;
   }
 );
 
@@ -84,6 +95,8 @@ type initialState = {
   successUpdateVote: boolean;
   pendingUpdateVote: boolean;
   rejectedUpdateVote: boolean;
+
+  successPotsVote: boolean;
 };
 
 const initialState: initialState = {
@@ -109,6 +122,8 @@ const initialState: initialState = {
   successUpdateVote: false,
   pendingUpdateVote: false,
   rejectedUpdateVote: false,
+
+  successPotsVote: false,
 };
 
 export const voteSlice = createSlice({
@@ -168,6 +183,10 @@ export const voteSlice = createSlice({
       })
       .addCase(updateVoteStatus.pending, (state) => {
         state.pendingUpdateVote = true;
+      })
+
+      .addCase(postVote.fulfilled, (state) => {
+        state.successPotsVote = true;
       });
   },
 });

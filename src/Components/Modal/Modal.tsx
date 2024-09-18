@@ -96,6 +96,36 @@ const ProfileView = ({
   );
 };
 
+const ShowDataText = ({ text }: { text: string }) => {
+  return (
+    <div className={styles.profileContainer}>
+      <p>{text}</p>
+    </div>
+  );
+};
+
+const Vote = ({
+  options,
+  handler,
+}: {
+  options: string[];
+  handler?: ChangeEventHandler<HTMLSelectElement>;
+}) => {
+  return (
+    <div className={styles.editComponenContainer}>
+      <select
+        onChange={handler}
+        className={styles.editComponenContainer__select}
+        style={{ width: "100%" }}
+      >
+        {options.map((option, i) => {
+          return <option key={`option-vote-${i}`}>{option}</option>;
+        })}
+      </select>
+    </div>
+  );
+};
+
 Modal.Header = Header;
 Modal.Body = Body;
 Modal.Footer = Footer;
@@ -103,5 +133,7 @@ Modal.DetailView = Image;
 Modal.Text = Text;
 Modal.EditComponent = EditComponent;
 Modal.ProfileView = ProfileView;
+Modal.ShowDataText = ShowDataText;
+Modal.Vote = Vote;
 
 export default Modal;
