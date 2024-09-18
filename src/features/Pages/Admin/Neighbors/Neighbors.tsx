@@ -21,9 +21,12 @@ const Neighbors = () => {
   const users = useAppSelector((state) =>
     state?.user?.dataGetUsers
       .map((el) => {
-        return el.profile;
+        return {
+          ...el.profile,
+          purchases: el.purchases,
+        } as any;
       })
-      .filter((user) => user !== null)
+      .filter((user) => user?.id)
   );
 
   const neighbors = users.map((el, i) => {
@@ -33,6 +36,7 @@ const Neighbors = () => {
       email: el.email,
       id: el.id,
       lastname: el.lastname,
+      membresia: el.purchases?.price,
     };
   });
 
@@ -81,14 +85,21 @@ const Neighbors = () => {
       <PageContentDist.Main>
         {screen.width > 768 && (
           <Table
-            headers={["Vecino", "Nombre", "Apellido", "Email", "Detalle"]}
+            headers={[
+              "Vecino",
+              "Nombre",
+              "Apellido",
+              "Email",
+              "membresia",
+              "Detalle",
+            ]}
             tableData={neighbors}
             handler={modalNeighborDetailHandler}
           />
         )}
         {screen.width <= 768 && (
           <ListDataMobile
-            headers={["Casa", "Nombre", "email"]}
+            headers={["Casa", "Nombre", "email", "Membresia"]}
             tableData={neighbors}
             handler={modalNeighborDetailHandler}
           />

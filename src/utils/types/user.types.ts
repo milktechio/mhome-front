@@ -9,7 +9,9 @@ export type UserDataType = {
     gender: string;
     eth_addres: string;
     chain_id: string;
+    purchases: any;
   };
+  purchases: any;
   roles: {
     id: number;
     name: string;

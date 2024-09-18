@@ -10,25 +10,23 @@ import ButtonSquare from "@/Components/Buttons/ButtonSquare/ButtonSquare";
 import ButtonPrimary from "@/Components/Buttons/ButtonPrimary/ButtonPrimary";
 import Details from "./components/Details";
 import Register from "./components/Register";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 
 const Neighbors = () => {
-    const { id } = useParams();
+  const { id } = useParams();
 
   const [modal, setModal] = useState<string>("");
 
   const screen = useScreenDimentions();
   const dispatch = useAppDispatch();
 
-  const variants = useAppSelector((state) =>
-    state?.variant?.dataGetVariants
-  );
+  const variants = useAppSelector((state) => state?.variant?.dataGetVariants);
 
   const neighbors = variants.map((el, i) => {
     return {
       name: el.name,
-      content:el.content,
-      price:el.price,
+      content: el.content,
+      price: el.price,
       recurring: el.recurring,
     };
   });
@@ -44,11 +42,7 @@ const Neighbors = () => {
   return (
     <PageContentDist>
       {/*<Details modal={modal} close={() => setModal("")} />*/}
-      <Register
-        modal={modal}
-        close={() => setModal("")}
-        neighbors={variants}
-      />
+      <Register modal={modal} close={() => setModal("")} neighbors={variants} />
       <PageContentDist.Header>
         <PageContentDist.HeaderTitle title="Tarifas" />
         {screen.width > 768 && (
@@ -69,14 +63,20 @@ const Neighbors = () => {
       <PageContentDist.Main>
         {screen.width > 768 && (
           <Table
-            headers={[ "Nombre","Contenido","Precio", "Recurrencia", "Detalles"]}
+            headers={[
+              "Nombre",
+              "Contenido",
+              "Precio",
+              "Recurrencia",
+              "Detalles",
+            ]}
             tableData={neighbors}
             handler={RegisterHandler}
           />
         )}
         {screen.width <= 768 && (
           <ListDataMobile
-            headers={[ "Nombre","Contenido","Precio", "Recurrencia"]}
+            headers={["Nombre", "Contenido", "Precio", "Recurrencia"]}
             tableData={neighbors}
             handler={RegisterHandler}
           />

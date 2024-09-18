@@ -48,14 +48,13 @@ export const getUsers = createAsyncThunk("getUsers/user", async () => {
   return profile.data.data;
 });
 
-
 export const getMyProfile = createAsyncThunk(
   "profile/user",
   async (token: string) => {
-    const profile = await axios.get('users/my-user', {
+    const profile = await axios.get("users/my-user", {
       headers: {
-        'Authorization': `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
     token && localStorage.setItem("token", token);
     return profile.data.data;
