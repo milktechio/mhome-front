@@ -34,7 +34,7 @@ const Footer = ({
   return (
     <div className={styles.footer}>
       <ButtonPrimaryImg handler={close} text="Cancelar" />
-      <ButtonPrimaryImg handler={handler} text={text} />
+      {handler && <ButtonPrimaryImg handler={handler} text={text} />}
     </div>
   );
 };

@@ -1,17 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios, { authAxios } from "../../../api/config/axios";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 // Crear una nueva variante
 export const postNewVariant = createAsyncThunk(
   "create/variant",
   async (variantData: any) => {
     const variant = new FormData();
-    for (let k in variantData) {
+    for (const k in variantData) {
       variant.append(k, variantData[k]);
     }
     const createNewVariant = await authAxios.post("variant/save", variant);
-    toast.success("Creado correctamente", { 'theme': "dark" });
+    toast.success("Creado correctamente", { theme: "dark" });
     return createNewVariant.data;
   }
 );
@@ -20,7 +20,8 @@ export const postNewVariant = createAsyncThunk(
 export const getVariants = createAsyncThunk(
   "getAll/variant",
   async (productId: string) => {
-    const variants = await authAxios.get(`variant?product_id=${productId}`);
+    const url = `variant?product_id=${productId}`;
+    const variants = await authAxios.get(url);
     return variants.data.data;
   }
 );
@@ -31,7 +32,8 @@ export const updateVariant = createAsyncThunk(
   async (variantData: { id: string; name?: string; price?: number }) => {
     const updateParams = new URLSearchParams();
     if (variantData.name) updateParams.append("name", variantData.name);
-    if (variantData.price) updateParams.append("price", variantData.price.toString());
+    if (variantData.price)
+      updateParams.append("price", variantData.price.toString());
 
     const updatedVariant = await authAxios.put(
       "variant/" + variantData.id,
@@ -163,7 +165,7 @@ export const variantSlice = createSlice({
       // Obtener enlace de variante
       .addCase(getVariantLink.fulfilled, (state, action) => {
         state.successGetVariantLink = true;
-        console.log('a',action.payload)
+        console.log("a", action.payload);
         state.dataGetVariantLink = action.payload;
       })
       .addCase(getVariantLink.pending, (state) => {
