@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ProductDataType } from "../../../utils/types/product.types";
-import axios, { authAxios } from "../../../api/config/axios";
+import { authAxios } from "../../../api/config/axios";
 
 // Crear un nuevo producto
 export const postNewProduct = createAsyncThunk(
@@ -29,7 +28,8 @@ export const updateProduct = createAsyncThunk(
   async (productData: { id: string; name?: string; price?: number }) => {
     const updateParams = new URLSearchParams();
     if (productData.name) updateParams.append("name", productData.name);
-    if (productData.price) updateParams.append("price", productData.price.toString());
+    if (productData.price)
+      updateParams.append("price", productData.price.toString());
 
     const updatedProduct = await authAxios.put(
       "products/" + productData.id,
@@ -56,7 +56,7 @@ type initialState = {
   successGetProducts: boolean;
   pendingGetProducts: boolean;
   rejectedGetProducts: boolean;
-  dataGetProducts: ProductDataType[];
+  dataGetProducts: any[];
 
   successUpdateProduct: boolean;
   pendingUpdateProduct: boolean;

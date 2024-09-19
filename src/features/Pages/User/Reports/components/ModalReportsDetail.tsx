@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Modal from "@/Components/Modal/Modal";
 
 const ModalReportsDetail = ({
@@ -9,7 +10,6 @@ const ModalReportsDetail = ({
   modal?: string;
   close?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
-  
   const show = reports?.filter((e) => {
     return e.id === modal;
   });

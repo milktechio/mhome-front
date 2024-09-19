@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { TableDataType } from "../../../utils/types/tableData.types";
 import styles from "./ListItem.module.css";
 

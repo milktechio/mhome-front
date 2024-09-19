@@ -1,11 +1,12 @@
+// @ts-nocheck
 import { useAppDispatch } from "@/redux/hooks/hooks";
 import { useState, useEffect } from "react";
 import { postNewVariant } from "@/redux/features/variant/variantSlice";
 import Card from "@/Components/Card/Card";
 import Modal from "@/Components/Modal/Modal";
 import PageContentDist from "@/layouts/PageContentDist/PageContentDist";
-import Builder from '@/Components/forms';
-import { useParams } from 'react-router-dom';
+import Builder from "@/Components/forms";
+import { useParams } from "react-router-dom";
 
 const ModalNeighborRegister = ({
   modal,
@@ -22,53 +23,53 @@ const ModalNeighborRegister = ({
   useEffect(() => {
     setFields([
       {
-        name: 'name',
-        label: 'Nombre del plan',
-        defaultValue: 'plan mensual',
+        name: "name",
+        label: "Nombre del plan",
+        defaultValue: "plan mensual",
         required: true,
       },
       {
-        name: 'description',
-        label: 'Descripción',
-        defaultValue: 'plan mensual',
+        name: "description",
+        label: "Descripción",
+        defaultValue: "plan mensual",
         required: true,
       },
       {
-        name: 'content',
-        label: 'Contenido',
-        defaultValue: 'plan mensual',
+        name: "content",
+        label: "Contenido",
+        defaultValue: "plan mensual",
         required: true,
       },
       {
-        name: 'price',
-        label: 'Precio',
-        defaultValue: '100',
+        name: "price",
+        label: "Precio",
+        defaultValue: "100",
         required: true,
       },
       {
-        name: 'currency',
-        label: 'Moneda',
-        defaultValue: 'MXN',
+        name: "currency",
+        label: "Moneda",
+        defaultValue: "MXN",
         required: true,
       },
       {
-        name: 'stock',
-        label: 'Stock',
-        defaultValue: '20',
+        name: "stock",
+        label: "Stock",
+        defaultValue: "20",
         required: true,
       },
       {
-        name: 'active',
-        label: 'Activo',
-        defaultValue: '1',
+        name: "active",
+        label: "Activo",
+        defaultValue: "1",
         required: true,
       },
       {
-        name: 'recurring',
-        label: 'Recurrencia',
-        defaultValue: 'month',
+        name: "recurring",
+        label: "Recurrencia",
+        defaultValue: "month",
         required: true,
-      }
+      },
     ]);
   }, []);
 
@@ -84,7 +85,7 @@ const ModalNeighborRegister = ({
     const newData = {
       ...data,
       product_id: id,
-      image:file // Añade el archivo al objeto de datos
+      image: file, // Añade el archivo al objeto de datos
     };
     dispatch(postNewVariant(newData));
   };

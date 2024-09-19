@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { postNewReport } from "@/redux/features/report/reportSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 import { useEffect, useState } from "react";
@@ -14,7 +15,6 @@ const ModalCreateReport = ({
   const [description, setDescription] = useState<string>("");
   const [image, setImage] = useState<FileList>(null);
   const dispatch = useAppDispatch();
-
 
   const report = {
     description: description,

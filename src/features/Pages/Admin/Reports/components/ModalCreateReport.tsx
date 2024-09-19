@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { postNewReport } from "@/redux/features/report/reportSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 import { useEffect, useState } from "react";

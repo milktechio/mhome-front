@@ -11,7 +11,7 @@ const ModalNeighborDetail = ({
   modal?: string;
   close?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
-  const show = neighbors?.filter((e) => {
+  const show = neighbors?.filter((e: any) => {
     return e.id === modal;
   });
 

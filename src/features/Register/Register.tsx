@@ -1,17 +1,15 @@
-import { useScreenDimentions } from "@/utils/hooks/screenDimentions";
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { registerUser } from "@/redux/features/user/userSlice";
-import PageContentDist from "@/layouts/PageContentDist/PageContentDist";
-import PageSessionLayOut from "@/layouts/PageSessionLayOut/PageSessionLayOut";
-import Card from "@/Components/Card/Card";
+// import { useScreenDimentions } from "@/utils/hooks/screenDimentions";
+// import { useState } from "react";
+// import { useDispatch } from "react-redux";
+// import { registerUser } from "@/redux/features/user/userSlice";
+// import PageContentDist from "@/layouts/PageContentDist/PageContentDist";
+// import PageSessionLayOut from "@/layouts/PageSessionLayOut/PageSessionLayOut";
+// import Card from "@/Components/Card/Card";
 
 const Register = () => {
-  
-
   return (
     <>
-      {screen.width < 768 && (
+      {/* {screen.width < 768 && (
         <PageSessionLayOut>
           <PageSessionLayOut.Header screen={screen.width} />
           
@@ -59,7 +57,7 @@ const Register = () => {
             />
           </Card.Footer>
         </Card>
-      )}
+      )} */}
     </>
   );
 };

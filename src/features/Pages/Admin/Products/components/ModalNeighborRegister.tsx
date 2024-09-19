@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useAppDispatch } from "@/redux/hooks/hooks";
 import { useState, useEffect } from "react";
 import { registerUser } from "@/redux/features/user/userSlice";

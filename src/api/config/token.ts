@@ -1,4 +1,4 @@
-import { jwtDecode } from "jwwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 class Token {
   get = () => {
@@ -12,31 +12,31 @@ class Token {
   json = () => {
     return this.decode(localStorage.getItem("token") || "");
   };
-  decode = (token) => {
+  decode = (token: any) => {
     try {
-      return jwwtDecode(token);
+      return jwtDecode(token);
     } catch (e) {
       return false;
     }
   };
 
-  set = (token) => {
+  set = (token: any) => {
     return localStorage.setItem("token", token);
   };
 
   check = () => {
-    let token = this.get();
+    const token = this.get();
 
     if (!token) return false;
 
-    let response = this.decode(token);
+    const response = this.decode(token);
 
     if (!response) {
       this.destroy();
       return false;
     }
 
-    if (response.exp <= new Date().getTime() / 1000) {
+    if (response?.exp && response?.exp <= new Date().getTime() / 1000) {
       this.destroy();
       return false;
     }

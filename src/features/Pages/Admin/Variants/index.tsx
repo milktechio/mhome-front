@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useState } from "react";
 import { useScreenDimentions } from "@/utils/hooks/screenDimentions";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";

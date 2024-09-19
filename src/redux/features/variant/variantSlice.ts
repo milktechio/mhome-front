@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios, { authAxios } from "../../../api/config/axios";
+import { authAxios } from "../../../api/config/axios";
 import { toast } from "react-toastify";
 
 // Crear una nueva variante

@@ -2,13 +2,13 @@ import { toast } from "react-toastify";
 import Token from "./token";
 
 class Interceptors {
-  error = (error) => {
+  error = (error: any) => {
     error = error.response;
     console.log(error.data);
     switch (error.status) {
       case 422:
-        for (let key in error.data.data.errors) {
-          error.data.data.errors[key].map((message) => {
+        for (const key in error.data.data.errors) {
+          error.data.data.errors[key].map((message: any) => {
             toast.error(message, { theme: "dark" });
             return message;
           });

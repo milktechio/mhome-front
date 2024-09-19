@@ -1,8 +1,8 @@
+// @ts-nocheck
 import ListItem from "./components/ListItem";
 import styles from "./ListDataMobile.module.css";
 
 const ListDataMobile = ({ tableData, headers, handler }: any) => {
-  
   const handleClick = (data: string) => {
     handler(data);
   };

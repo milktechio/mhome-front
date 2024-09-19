@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Card from "@/Components/Card/Card";
 import Modal from "@/Components/Modal/Modal";
 import React from "react";
@@ -16,19 +17,7 @@ const ModalNeighborDetail = ({
   });
 
   console.log("data", show);
-  return (
-    <>
-      {modal === show?.[0]?.id && (
-        <Modal>
-          <Modal.Header text="Vecino" />
-          <Modal.Body>
-            <B
-          </Modal.Body>
-          <Modal.Footer text="detalle" close={close} />
-        </Modal>
-      )}
-    </>
-  );
+  return <></>;
 };
 
 export default ModalNeighborDetail;

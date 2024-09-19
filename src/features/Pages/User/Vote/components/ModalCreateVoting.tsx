@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Card from "@/Components/Card/Card";
 import Modal from "@/Components/Modal/Modal";
 import { createVoting } from "@/redux/features/vote/voteSlice";

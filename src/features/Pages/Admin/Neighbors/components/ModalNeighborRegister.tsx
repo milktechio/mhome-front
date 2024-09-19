@@ -1,49 +1,8 @@
 import { useAppDispatch } from "@/redux/hooks/hooks";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { registerUser } from "@/redux/features/user/userSlice";
 import Modal from "@/Components/Modal/Modal";
 import Card from "@/Components/Card/Card";
-
-const fields = [
-  {
-    name: "username",
-    label: "Nombre de usuario",
-    defaultValue: "",
-    required: true,
-  },
-  {
-    name: "name",
-    label: "Nombre",
-    defaultValue: "",
-    required: true,
-  },
-  {
-    name: "lastname",
-    label: "Apellido",
-    defaultValue: "",
-    required: true,
-  },
-  {
-    name: "email",
-    label: "Correo electrónico",
-    defaultValue: "",
-    required: true,
-  },
-  {
-    name: "password",
-    label: "Contraseña",
-    defaultValue: "",
-    required: true,
-    password: true,
-  },
-  {
-    name: "confirmPasword",
-    label: "Confirmar contraseña",
-    defaultValue: "",
-    password: true,
-    required: true,
-  },
-];
 
 const ModalNeighborRegister = ({
   modal,

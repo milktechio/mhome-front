@@ -6,7 +6,7 @@ import ButtonPrimary from "@/Components/Buttons/ButtonPrimary/ButtonPrimary";
 import InputSearch from "@/Components/Inputs/InputSearch/InputSearch";
 import ButtonSquare from "@/Components/Buttons/ButtonSquare/ButtonSquare";
 import ModalCreateVoting from "./components/ModalCreateVoting";
-import ModalViewVoteDetail from "./components/ModalViewVoteDetail";
+// import ModalViewVoteDetail from "./components/ModalViewVoteDetail";
 import ListDataMobile from "@/Components/ListData/ListDataMobile";
 import { getVotes } from "@/redux/features/vote/voteSlice";
 import Data from "./MOCK_DATA (2).json";
@@ -21,7 +21,7 @@ const Vote = () => {
 
   useEffect(() => {
     dispatch(getVotes());
-  }, []);
+  }, [dispatch]);
 
   console.log(voting);
   return (

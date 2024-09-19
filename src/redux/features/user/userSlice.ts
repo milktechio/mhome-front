@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios, { authAxios } from "@/api/config/axios";
-import { UserDataType } from "../../../utils/types/user.types";
 
 export const loginUser = createAsyncThunk(
   "login/user",
@@ -74,12 +73,12 @@ type initialState = {
   successMyProfile: boolean;
   pendingMyProfile: boolean;
   rejectedMyProfile: boolean;
-  dataMyProfile: UserDataType;
+  dataMyProfile: any;
 
   successGetUsers: boolean;
   pendingGetUsers: boolean;
   rejectedGetUsers: boolean;
-  dataGetUsers: UserDataType[];
+  dataGetUsers: any[];
 };
 
 const initialState: initialState = {
@@ -173,7 +172,7 @@ export const userSlice = createSlice({
         state.successMyProfile = true;
         state.pendingMyProfile = false;
         state.dataMyProfile = action.payload;
-        state.payloadLogin = localStorage.getItem("token");
+        state.payloadLogin = localStorage.getItem("token") ?? "";
       })
       .addCase(getMyProfile.pending, (state) => {
         state.pendingMyProfile = true;

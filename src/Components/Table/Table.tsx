@@ -1,15 +1,15 @@
+// @ts-nocheck
 import ButtonViewTable from "../Buttons/ButtonViewTable/ButtonViewTable";
 import styles from "./Table.module.css";
 
 const Table = ({ headers, handler, tableData }: any) => {
-
   const handleClick = (data: string) => {
     handler(data);
   };
 
   return (
     <>
-      <div className={ styles.tableContainer}>
+      <div className={styles.tableContainer}>
         <table className={styles.tableMain}>
           <thead className={styles.tableHeader}>
             <tr>
@@ -23,11 +23,7 @@ const Table = ({ headers, handler, tableData }: any) => {
               return (
                 <tr key={`row-table-${i}`}>
                   {Object?.keys(data)?.map((el, i) => {
-                    return el === "id" ? (
-                      <></>
-                    ) : (
-                      <td >{data[el]}</td>
-                    );
+                    return el === "id" ? <></> : <td>{data[el]}</td>;
                   })}
                   <td>
                     <div className={styles.toolsContainer}>

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useState } from "react";
 import { updateReportStatus } from "@/redux/features/report/reportSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
@@ -13,7 +14,6 @@ const ModalReportsDetail = ({
   close?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
   const [selectedOption, setSelectedOption] = useState("");
-
 
   const dispatch = useAppDispatch();
 

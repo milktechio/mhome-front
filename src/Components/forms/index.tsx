@@ -1,15 +1,12 @@
+// @ts-nocheck
 import { useState, useEffect, useRef } from "react";
-
-import Confirm from "../Buttons/Confirm";
-import InputFile from "./InputFile";
-import { toast } from "react-toastify";
 
 const Builder = ({ fields, onChange }: { fields: any; onChange: any }) => {
   const initialState = useRef({});
 
   const loadInitialState = () => {
-    let tempFields = initialState.current;
-    for (let k in fields) {
+    const tempFields = initialState.current as any;
+    for (const k in fields) {
       tempFields[fields[k].name] = fields[k].defaultValue?.toString() || "";
     }
     initialState.current = tempFields;
@@ -27,25 +24,25 @@ const Builder = ({ fields, onChange }: { fields: any; onChange: any }) => {
 
   useEffect(() => {
     onChange(data);
-  }, [data]);
+  }, [data, onChange]);
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setData({
       ...data,
       [e.target.name]: e.target.value,
     });
   };
 
-  const checkReadOnly = (field) =>
+  const checkReadOnly = (field: any) =>
     field.readonly ? "(No se puede editar)" : "(Opcional)";
-  const fieldOrEmpty = (field, empty = "") => field || empty;
+  const fieldOrEmpty = (field: any, empty = "") => field || empty;
 
   return (
     <>
-      {inputs.map((field) => {
-        const { name } = field;
+      {inputs.map((field: any) => {
+        const { name } = field as any;
 
-        if (data[field.name] == null) return null;
+        if (data?.[field.name] == null) return null;
 
         let formInput = (
           <input
@@ -90,10 +87,7 @@ const Builder = ({ fields, onChange }: { fields: any; onChange: any }) => {
         }
 
         return (
-          <formControl
-            style={{ width: "90%" }}
-            key={"formcontrol-" + field.name}
-          >
+          <div style={{ width: "90%" }} key={"formcontrol-" + field.name}>
             <label style={{ marginTop: "1rem" }} key={"label-" + field.name}>
               {fieldOrEmpty(field.label)}{" "}
               {field.required ? "*" : checkReadOnly(field)}{" "}
@@ -104,7 +98,7 @@ const Builder = ({ fields, onChange }: { fields: any; onChange: any }) => {
                 {field.noValidMessage}
               </small>
             )}
-          </formControl>
+          </div>
         );
       })}
     </>
