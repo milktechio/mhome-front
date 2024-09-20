@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { useEffect, useState } from "react";
 import { useScreenDimentions } from "@/utils/hooks/screenDimentions";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
@@ -9,7 +8,6 @@ import PageContentDist from "@/layouts/PageContentDist/PageContentDist";
 import ListDataMobile from "@/Components/ListData/ListDataMobile";
 import ButtonSquare from "@/Components/Buttons/ButtonSquare/ButtonSquare";
 import ButtonPrimary from "@/Components/Buttons/ButtonPrimary/ButtonPrimary";
-import Details from "./components/Details";
 import Register from "./components/Register";
 import { useParams } from "react-router-dom";
 
@@ -23,7 +21,7 @@ const Neighbors = () => {
 
   const variants = useAppSelector((state) => state?.variant?.dataGetVariants);
 
-  const neighbors = variants.map((el, i) => {
+  const neighbors = variants.map((el) => {
     return {
       name: el.name,
       content: el.content,
@@ -37,13 +35,14 @@ const Neighbors = () => {
   };
 
   useEffect(() => {
-    dispatch(getVariants(id));
-  }, [dispatch]);
+    dispatch(getVariants(id ?? ""));
+    console.log(id);
+  }, [dispatch, id]);
 
   return (
     <PageContentDist>
       {/*<Details modal={modal} close={() => setModal("")} />*/}
-      <Register modal={modal} close={() => setModal("")} neighbors={variants} />
+      <Register modal={modal} close={() => setModal("")} />
       <PageContentDist.Header>
         <PageContentDist.HeaderTitle title="Tarifas" />
         {screen.width > 768 && (
@@ -72,6 +71,7 @@ const Neighbors = () => {
               "Detalles",
             ]}
             tableData={neighbors}
+            //@ts-expect-error solo se pasa la funcion
             handler={RegisterHandler}
           />
         )}
@@ -79,6 +79,7 @@ const Neighbors = () => {
           <ListDataMobile
             headers={["Nombre", "Contenido", "Precio", "Recurrencia"]}
             tableData={neighbors}
+            //@ts-expect-error solo se pasa la funcion
             handler={RegisterHandler}
           />
         )}

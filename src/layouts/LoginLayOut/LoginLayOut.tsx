@@ -31,11 +31,13 @@ const InputAreaContent = ({
   return (
     <div className={styles.inputArea}>
       <InputSimple
+        disabled={false}
         placeholderText="Email"
         inputValue={inputValueEmail}
         handler={onchangeHandlerEmail}
       />
       <InputSimple
+        disabled={false}
         type="password"
         placeholderText="Password"
         inputValue={inputValuePassword}

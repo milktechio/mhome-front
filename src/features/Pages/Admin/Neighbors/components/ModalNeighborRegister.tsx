@@ -4,6 +4,15 @@ import { registerUser } from "@/redux/features/user/userSlice";
 import Modal from "@/Components/Modal/Modal";
 import Card from "@/Components/Card/Card";
 
+export type NeighborsProps = {
+  username: string;
+  name: string;
+  lastname: string;
+  email: string;
+  password: string;
+  confirmpasword: string;
+};
+
 const ModalNeighborRegister = ({
   modal,
   close,
@@ -11,16 +20,30 @@ const ModalNeighborRegister = ({
   modal?: string;
   close?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
-  const [data, setData] = useState<any>({
-    username: "",
-    name: "",
-    lastname: "",
-    email: "",
-    password: "",
-    confirmpasword: "",
-  });
+  const [username, setUserName] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [lastname, setLastName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [confirmpassword, setConfirmPassword] = useState<string>("");
 
   const dispatch = useAppDispatch();
+
+  const data: {
+    username: string;
+    name: string;
+    lastname: string;
+    email: string;
+    password: string;
+    confirmpassword: string;
+  } = {
+    username: username,
+    name: name,
+    lastname: lastname,
+    email: email,
+    password: password,
+    confirmpassword: confirmpassword,
+  };
 
   return (
     <>
@@ -33,32 +56,32 @@ const ModalNeighborRegister = ({
                 <Card.Input
                   text="username"
                   placeholderText={"username"}
-                  handler={(e) => setData({ username: e.target.value })}
+                  handler={(e) => setUserName(e.target.value)}
                 />
                 <Card.Input
                   text="name"
                   placeholderText={"name"}
-                  handler={(e) => setData({ name: e.target.value })}
+                  handler={(e) => setName(e.target.value)}
                 />
                 <Card.Input
                   text="lastname"
                   placeholderText={"lastname"}
-                  handler={(e) => setData({ lastname: e.target.value })}
+                  handler={(e) => setLastName(e.target.value)}
                 />
                 <Card.Input
                   text="email"
                   placeholderText={"email"}
-                  handler={(e) => setData({ name: e.target.value })}
+                  handler={(e) => setEmail(e.target.value)}
                 />
                 <Card.Input
                   text="password"
                   placeholderText={"password"}
-                  handler={(e) => setData({ name: e.target.value })}
+                  handler={(e) => setPassword(e.target.value)}
                 />
                 <Card.Input
                   text="confirm password"
                   placeholderText={"confirm password"}
-                  handler={(e) => setData({ name: e.target.value })}
+                  handler={(e) => setConfirmPassword(e.target.value)}
                 />
               </Card.Body>
             </Card>

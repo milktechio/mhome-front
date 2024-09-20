@@ -1,23 +1,20 @@
-// @ts-nocheck
-import Card from "@/Components/Card/Card";
-import Modal from "@/Components/Modal/Modal";
-import React from "react";
+// import React from "react";
+// import { NeighborsProps } from "../../Neighbors/components/ModalNeighborRegister";
 
-const ModalNeighborDetail = ({
-  neighbors,
-  modal,
-  close,
-}: {
-  neighbors?: any;
-  modal?: string;
-  close?: React.MouseEventHandler<HTMLButtonElement>;
-}) => {
-  const show = neighbors?.filter((e) => {
-    return e.id === modal;
-  });
+// const ModalNeighborDetail = ({
+//   neighbors,
+//   modal,
+// }: {
+//   neighbors?: NeighborsProps[];
+//   modal?: string;
+//   close?: React.MouseEventHandler<HTMLButtonElement>;
+// }) => {
+//   const show = neighbors?.filter((e: string) => {
+//     return e === modal;
+//   });
 
-  console.log("data", show);
-  return <></>;
-};
+//   console.log("data", show);
+//   return <></>;
+// };
 
-export default ModalNeighborDetail;
+// export default ModalNeighborDetail;

@@ -1,12 +1,29 @@
-// @ts-nocheck
 import { useAppDispatch } from "@/redux/hooks/hooks";
 import { useState, useEffect } from "react";
 import { postNewVariant } from "@/redux/features/variant/variantSlice";
-import Card from "@/Components/Card/Card";
 import Modal from "@/Components/Modal/Modal";
 import PageContentDist from "@/layouts/PageContentDist/PageContentDist";
 import Builder from "@/Components/forms";
 import { useParams } from "react-router-dom";
+
+export type FieldsProps = {
+  name: string;
+  label: string;
+  defaultValue: string;
+  required: boolean;
+  password?: boolean;
+};
+
+export type MemberShipProps = {
+  active: string;
+  content: string;
+  currency: string;
+  description: string;
+  name: string;
+  price: string;
+  recurring: string;
+  stock: string;
+};
 
 const ModalNeighborRegister = ({
   modal,
@@ -15,9 +32,9 @@ const ModalNeighborRegister = ({
   modal?: string;
   close?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
-  const [fields, setFields] = useState<[]>([]);
-  const [data, setData] = useState<any>({});
-  const [file, setFile] = useState<any>(null); // Estado para el archivo
+  const [fields, setFields] = useState<FieldsProps[]>([]);
+  const [data, setData] = useState<MemberShipProps>();
+  const [file, setFile] = useState<File>(); // Estado para el archivo
   const { id } = useParams();
 
   useEffect(() => {
@@ -74,7 +91,7 @@ const ModalNeighborRegister = ({
   }, []);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files && event.target.files[0]) {
+    if (event?.target?.files && event?.target?.files[0]) {
       setFile(event.target.files[0]); // Guarda el archivo seleccionado en el estado
     }
   };
@@ -87,9 +104,11 @@ const ModalNeighborRegister = ({
       product_id: id,
       image: file, // Añade el archivo al objeto de datos
     };
+    console.log(newData.image);
     dispatch(postNewVariant(newData));
   };
 
+  console.log(data);
   return (
     <>
       {modal === "register" && (

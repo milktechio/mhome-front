@@ -8,7 +8,9 @@ import PageContentDist from "@/layouts/PageContentDist/PageContentDist";
 import ListDataMobile from "@/Components/ListData/ListDataMobile";
 import ButtonPrimary from "@/Components/Buttons/ButtonPrimary/ButtonPrimary";
 import ModalCreateReport from "./components/ModalCreateReport";
-import ModalReportsDetail from "./components/ModalReportsDetail";
+import ModalReportsDetail, {
+  ReportsProps,
+} from "./components/ModalReportsDetail";
 import ButtonSquare from "@/Components/Buttons/ButtonSquare/ButtonSquare";
 import reportsImg from "../../../../assets/SideBar/Reports.svg";
 import search from "../../../../assets/Input/search.svg";
@@ -21,18 +23,20 @@ const Reports = () => {
   const screen = useScreenDimentions();
   const reports = useAppSelector((state) => state.report.dataGetReports);
 
-  const filteredReports = reports?.map((report: any, index: number) => {
-    return {
-      neighbor: index + 1,
-      status: report?.status,
-      created: new Date(report?.created_at).toLocaleString("es-Es", {
-        day: "2-digit",
-        month: "2-digit",
-        year: "numeric",
-      }),
-      id: report?.id,
-    };
-  });
+  const filteredReports = reports?.map(
+    (report: ReportsProps, index: number) => {
+      return {
+        neighbor: index + 1,
+        status: report?.status,
+        created: new Date(report?.created_at).toLocaleString("es-Es", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+        }),
+        id: report?.id,
+      };
+    }
+  );
 
   const modalReportDetailHandler = (dataId: string) => {
     setModal(dataId);
@@ -40,7 +44,7 @@ const Reports = () => {
 
   useEffect(() => {
     dispatch(getReports());
-  }, [dispatch ]);
+  }, [dispatch]);
 
   return (
     <PageContentDist>
@@ -77,6 +81,7 @@ const Reports = () => {
           <Table
             headers={["Id", "Estado", "Fecha", "Detail"]}
             tableData={filteredReports}
+            //@ts-expect-error solo paso la funcion
             handler={modalReportDetailHandler}
           />
         )}
@@ -84,6 +89,7 @@ const Reports = () => {
           <ListDataMobile
             headers={["Id", "Estado", "Fecha"]}
             tableData={filteredReports}
+            //@ts-expect-error solo paso la funcion
             handler={modalReportDetailHandler}
           />
         )}

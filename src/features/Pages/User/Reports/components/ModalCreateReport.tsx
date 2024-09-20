@@ -1,6 +1,5 @@
-// @ts-nocheck
 import { postNewReport } from "@/redux/features/report/reportSlice";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
+import { useAppDispatch } from "@/redux/hooks/hooks";
 import { useEffect, useState } from "react";
 import Card from "@/Components/Card/Card";
 import Modal from "@/Components/Modal/Modal";
@@ -13,7 +12,7 @@ const ModalCreateReport = ({
   close?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
   const [description, setDescription] = useState<string>("");
-  const [image, setImage] = useState<FileList>(null);
+  const [image, setImage] = useState<string>("");
   const dispatch = useAppDispatch();
 
   const report = {
@@ -24,6 +23,15 @@ const ModalCreateReport = ({
   useEffect(() => {
     console.log(image);
   }, [image]);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files && files.length > 0) {
+      const file = files[0];
+      const fileUrl = URL.createObjectURL(file);
+      setImage(fileUrl);
+    }
+  };
 
   return (
     <>
@@ -42,7 +50,7 @@ const ModalCreateReport = ({
                 />
                 <Card.UpLoadFile
                   handler={(e) => {
-                    setImage(e?.target?.files[0]);
+                    handleFileChange(e);
                   }}
                 />
               </Card.Body>

@@ -1,15 +1,26 @@
-// @ts-nocheck
 import { useState } from "react";
 import { updateReportStatus } from "@/redux/features/report/reportSlice";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
+import { useAppDispatch } from "@/redux/hooks/hooks";
 import Modal from "@/Components/Modal/Modal";
+
+export type ReportsProps = {
+  created_at: string;
+  deleted_at: null;
+  description: string;
+  id: string;
+  image: string;
+  image_url: string;
+  status: string;
+  updated_at: string;
+  user_id: string;
+};
 
 const ModalReportsDetail = ({
   reports,
   modal,
   close,
 }: {
-  reports?: any;
+  reports?: ReportsProps[];
   modal?: string;
   close?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
@@ -21,18 +32,19 @@ const ModalReportsDetail = ({
     return report.id === modal;
   });
 
-  console.log(selectedOption);
+
+
   return (
     <>
-      {modal === show[0]?.id && (
+      {modal === (show ?? [])[0]?.id && (
         <Modal>
           <Modal.Header text="Detalles" />
           <Modal.Body>
-            <Modal.DetailView image={show[0].image} />
-            <Modal.Text text={show[0].description} />
+            <Modal.DetailView image={(show ?? [])[0]?.image} />
+            <Modal.Text text={(show ?? [])[0]?.description} />
             <Modal.EditComponent
               handler={(e) => setSelectedOption(e.target.value)}
-              text={show[0].status}
+              text={(show ?? [])[0]?.status}
             />
           </Modal.Body>
           <Modal.Footer
@@ -41,7 +53,7 @@ const ModalReportsDetail = ({
             handler={() => {
               dispatch(
                 updateReportStatus({
-                  id: show[0]?.id,
+                  id: (show ?? [])[0]?.id,
                   status: selectedOption,
                 })
               );

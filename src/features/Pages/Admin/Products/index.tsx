@@ -1,17 +1,13 @@
-// @ts-nocheck
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useScreenDimentions } from "@/utils/hooks/screenDimentions";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 import { getProducts } from "@/redux/features/product/productSlice";
-import InputSearch from "@/Components/Inputs/InputSearch/InputSearch";
 import Table from "@/Components/Table/Table";
 import PageContentDist from "@/layouts/PageContentDist/PageContentDist";
 import ListDataMobile from "@/Components/ListData/ListDataMobile";
 import { useNavigate } from "react-router-dom"; // Importa useNavigate de React Router
 
 const Neighbors = () => {
-  const [modal, setModal] = useState<string>("");
-
   const screen = useScreenDimentions();
   const dispatch = useAppDispatch();
   const navigate = useNavigate(); // Inicializa useNavigate
@@ -45,6 +41,7 @@ const Neighbors = () => {
           <Table
             headers={["Nombre", "Contenido", "Detalle"]}
             tableData={data}
+            //@ts-expect-error solo se pasa la funcion
             handler={modalNeighborDetailHandler}
           />
         )}
@@ -52,6 +49,7 @@ const Neighbors = () => {
           <ListDataMobile
             headers={["Name", "Contenido"]}
             tableData={data}
+            //@ts-expect-error solo se pasa la funcion
             handler={modalNeighborDetailHandler}
           />
         )}

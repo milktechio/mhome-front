@@ -10,7 +10,7 @@ export const createVoting = createAsyncThunk(
     minimum_participations: string;
     status: string;
     date_end: string;
-    image: any;
+    image: string;
   }) => {
     const voting = new FormData();
 

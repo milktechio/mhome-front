@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { useState, useEffect, useRef } from "react";
 
 const Builder = ({ fields, onChange }: { fields: any; onChange: any }) => {

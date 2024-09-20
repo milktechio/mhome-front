@@ -1,4 +1,3 @@
-// @ts-nocheck
 import Card from "@/Components/Card/Card";
 import Modal from "@/Components/Modal/Modal";
 import { createVoting } from "@/redux/features/vote/voteSlice";
@@ -30,6 +29,15 @@ const ModalCreateVoting = ({
     status: status,
     date_end: dateEnd,
     image: image,
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files && files.length > 0) {
+      const file = files[0];
+      const fileUrl = URL.createObjectURL(file);
+      setImage(fileUrl);
+    }
   };
 
   return (
@@ -72,7 +80,7 @@ const ModalCreateVoting = ({
                 />
                 <Card.UpLoadFile
                   handler={(e) => {
-                    setImage(e?.target?.files[0]);
+                    handleFileChange(e);
                   }}
                 />
               </Card.Body>
@@ -92,49 +100,3 @@ const ModalCreateVoting = ({
 };
 
 export default ModalCreateVoting;
-
-//const [fields, setFields] = useState<any>([]);
-// const [data, setData] = useState<any>({});
-
-// useEffect(() => {
-//   setFields([
-//     {
-//       name: "username",
-//       label: "Nombre de usuario",
-//       defaultValue: "",
-//       required: true,
-//     },
-//     {
-//       name: "name",
-//       label: "Nombre",
-//       defaultValue: "",
-//       required: true,
-//     },
-//     {
-//       name: "lastname",
-//       label: "Apellido",
-//       defaultValue: "",
-//       required: true,
-//     },
-//     {
-//       name: "email",
-//       label: "Correo electrónico",
-//       defaultValue: "",
-//       required: true,
-//     },
-//     {
-//       name: "password",
-//       label: "Contraseña",
-//       defaultValue: "",
-//       required: true,
-//       password: true,
-//     },
-//     {
-//       name: "confirmPasword",
-//       label: "Confirmar contraseña",
-//       defaultValue: "",
-//       password: true,
-//       required: true,
-//     },
-//   ]);
-// }, []);

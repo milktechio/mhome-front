@@ -32,10 +32,10 @@ function App() {
   };
 
   useEffect(() => {
-    let tokenStoraged = localStorage.getItem("token") || false;
+    const tokenStoraged = localStorage.getItem("token") || false;
 
     if (tokenStoraged) {
-      let tryDecode = async () => jwtDecode(tokenStoraged);
+      const tryDecode = async () => jwtDecode(tokenStoraged);
 
       tryDecode()
         .then(() => {
@@ -45,7 +45,7 @@ function App() {
     } else {
       setLoading(false);
     }
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (token && profile?.profile?.name === "") {

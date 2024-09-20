@@ -1,4 +1,3 @@
-// @ts-nocheck
 import Modal from "@/Components/Modal/Modal";
 import { getVoting, postVote } from "@/redux/features/vote/voteSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";

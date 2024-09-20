@@ -1,5 +1,5 @@
 export type TableDataType = {
-  Id?: number;
+  Id?: number | string;
   Total?: string;
   Estado?: string;
   Fecha?: string;
@@ -7,6 +7,7 @@ export type TableDataType = {
   Nombre?: string;
   email?: string;
   Telefono?: string;
+  [key: string]: any;
 };
 
 export type TableData = {

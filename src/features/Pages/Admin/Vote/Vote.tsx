@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
 import { useScreenDimentions } from "@/utils/hooks/screenDimentions";
@@ -11,18 +10,36 @@ import { getVotes } from "@/redux/features/vote/voteSlice";
 import Lists, { ListItems } from "@/Components/Lists/Lists";
 import ModalViewVoteDetail from "./components/ModalViewVoteDetail";
 
+export type VoteProps = {
+  created_at: string;
+  date_end: string;
+  deleted_at: null;
+  id: string;
+  image: string;
+  minimum_participations: 2;
+  options: Array<string>;
+  participations_count: 1;
+  status: string;
+  title: string;
+  updated_at: string;
+  user_id: string;
+};
+
 const Vote = () => {
   const [modal, setModal] = useState<string>("");
 
   const screen = useScreenDimentions();
   const dispatch = useAppDispatch();
 
-  const voting = useAppSelector((state) => state.vote.dataGetVotes.data);
+  const voting: VoteProps[] = useAppSelector(
+    (state) => state.vote.dataGetVotes.data
+  );
 
   useEffect(() => {
     dispatch(getVotes());
   }, [dispatch]);
 
+  console.log(voting);
   return (
     <PageContentDist>
       <ModalCreateVoting modal={modal} close={() => setModal("")} />

@@ -1,8 +1,13 @@
-// @ts-nocheck
+import { TableDataType } from "@/utils/types/tableData.types";
 import ButtonViewTable from "../Buttons/ButtonViewTable/ButtonViewTable";
 import styles from "./Table.module.css";
+import { MouseEventHandler } from "react";
 
-const Table = ({ headers, handler, tableData }: any) => {
+const Table = ({ headers, handler, tableData }: {
+  tableData: TableDataType[];
+  headers: string[];
+  handler(d: string): MouseEventHandler<HTMLDivElement>;
+}) => {
   const handleClick = (data: string) => {
     handler(data);
   };
@@ -22,7 +27,7 @@ const Table = ({ headers, handler, tableData }: any) => {
             {tableData?.map((data, i) => {
               return (
                 <tr key={`row-table-${i}`}>
-                  {Object?.keys(data)?.map((el, i) => {
+                  {Object?.keys(data)?.map((el) => {
                     return el === "id" ? <></> : <td>{data[el]}</td>;
                   })}
                   <td>
