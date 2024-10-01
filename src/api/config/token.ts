@@ -49,4 +49,6 @@ class Token {
   };
 }
 
-export default new Token();
+const instance = new Token();
+
+export default instance;

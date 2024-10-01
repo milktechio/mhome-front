@@ -41,4 +41,6 @@ class Interceptors {
   };
 }
 
-export default new Interceptors();
+const instance = new Interceptors();
+
+export default instance;

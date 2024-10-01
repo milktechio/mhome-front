@@ -72,7 +72,7 @@ export const postVote = createAsyncThunk(
   }
 );
 
-type initialState = {
+type initialStateType = {
   successPostVoting: boolean;
   pendingPostVoting: boolean;
   rejectedPostVoting: boolean;
@@ -99,7 +99,7 @@ type initialState = {
   successPotsVote: boolean;
 };
 
-const initialState: initialState = {
+const initialState: initialStateType = {
   successPostVoting: false,
   pendingPostVoting: false,
   rejectedPostVoting: false,

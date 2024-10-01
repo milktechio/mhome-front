@@ -48,7 +48,7 @@ export const deleteProduct = createAsyncThunk(
   }
 );
 
-type initialState = {
+type initialStateType = {
   successPostProduct: boolean;
   pendingPostProduct: boolean;
   rejectedPostProduct: boolean;
@@ -67,7 +67,7 @@ type initialState = {
   rejectedDeleteProduct: boolean;
 };
 
-const initialState: initialState = {
+const initialState: initialStateType = {
   successPostProduct: false,
   pendingPostProduct: false,
   rejectedPostProduct: false,

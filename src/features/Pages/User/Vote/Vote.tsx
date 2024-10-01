@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
+import { useAppDispatch } from "@/redux/hooks/hooks";
 import { useScreenDimentions } from "@/utils/hooks/screenDimentions";
 import PageContentDist from "@/layouts/PageContentDist/PageContentDist";
 import ButtonPrimary from "@/Components/Buttons/ButtonPrimary/ButtonPrimary";
@@ -17,13 +17,13 @@ const Vote = () => {
   const screen = useScreenDimentions();
   const dispatch = useAppDispatch();
 
-  const voting = useAppSelector((state) => state.vote.dataGetVotes);
+  // const voting = useAppSelector((state) => state.vote.dataGetVotes);
 
   useEffect(() => {
     dispatch(getVotes());
   }, [dispatch]);
 
-  console.log(voting);
+  const voidCallback = () => {};
   return (
     <PageContentDist>
       <ModalCreateVoting modal={modal} close={() => setModal("")} />
@@ -51,7 +51,11 @@ const Vote = () => {
         )}
       </PageContentDist.Header>
       <PageContentDist.Main>
-        <ListDataMobile headers={["Titulo", "Comunidad"]} tableData={Data} />
+        <ListDataMobile
+          headers={["Titulo", "Comunidad"]}
+          tableData={Data}
+          handler={voidCallback as any}
+        />
       </PageContentDist.Main>
     </PageContentDist>
   );

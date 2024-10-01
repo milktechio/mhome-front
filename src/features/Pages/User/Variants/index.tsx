@@ -88,14 +88,14 @@ const Neighbors = () => {
               "Detalles",
             ]}
             tableData={neighbors}
-            handler={ComprarHandler}
+            handler={ComprarHandler as any}
           />
         )}
         {screen.width <= 768 && (
           <ListDataMobile
             headers={["Nombre", "Contenido", "Precio", "Recurrencia"]}
             tableData={neighbors}
-            handler={ComprarHandler}
+            handler={ComprarHandler as any}
           />
         )}
       </PageContentDist.Main>

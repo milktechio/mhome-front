@@ -9,8 +9,8 @@ export const useScreenDimentions = () => {
   useEffect(() => {
     const handleResize = () => {
       setScreenDimentions({
-        width: innerWidth,
-        height: innerHeight,
+        width: window.innerWidth,
+        height: window.innerHeight,
       });
     };
 

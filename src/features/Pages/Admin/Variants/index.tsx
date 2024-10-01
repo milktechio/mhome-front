@@ -12,56 +12,52 @@ import Register from "./components/Register";
 import { useParams } from "react-router-dom";
 
 const Neighbors = () => {
-  const { id } = useParams();
-
+  const { id } = useParams<{ id: string }>(); // Add type for useParams
   const [modal, setModal] = useState<string>("");
 
   const screen = useScreenDimentions();
   const dispatch = useAppDispatch();
 
-  const variants = useAppSelector((state) => state?.variant?.dataGetVariants);
+  const variants = useAppSelector((state) => state.variant.dataGetVariants);
 
-  const neighbors = variants.map((el) => {
-    return {
-      name: el.name,
-      content: el.content,
-      price: el.price,
-      recurring: el.recurring,
-    };
-  });
+  const neighbors = variants.map((el) => ({
+    name: el.name,
+    content: el.content,
+    price: el.price,
+    recurring: el.recurring,
+  }));
 
-  const RegisterHandler = (dataId: string) => {
+  const registerHandler = (dataId: string) => {
     setModal(dataId);
   };
 
   useEffect(() => {
-    dispatch(getVariants(id ?? ""));
-    console.log(id);
+    if (id) {
+      dispatch(getVariants(id));
+    }
   }, [dispatch, id]);
 
   return (
     <PageContentDist>
-      {/*<Details modal={modal} close={() => setModal("")} />*/}
       <Register modal={modal} close={() => setModal("")} />
       <PageContentDist.Header>
         <PageContentDist.HeaderTitle title="Tarifas" />
-        {screen.width > 768 && (
+        {screen.width > 768 ? (
           <>
             <PageContentDist.HeaderButtons>
               <ButtonPrimary
                 text="Registrar tarifa"
-                handler={() => {
-                  setModal("register");
-                }}
+                handler={() => setModal("register")}
               />
             </PageContentDist.HeaderButtons>
             <InputSearch />
           </>
+        ) : (
+          <ButtonSquare />
         )}
-        {screen.width <= 768 && <ButtonSquare />}
       </PageContentDist.Header>
       <PageContentDist.Main>
-        {screen.width > 768 && (
+        {screen.width > 768 ? (
           <Table
             headers={[
               "Nombre",
@@ -71,16 +67,13 @@ const Neighbors = () => {
               "Detalles",
             ]}
             tableData={neighbors}
-            //@ts-expect-error solo se pasa la funcion
-            handler={RegisterHandler}
+            handler={registerHandler as any} // TypeScript error suppression is not needed here
           />
-        )}
-        {screen.width <= 768 && (
+        ) : (
           <ListDataMobile
             headers={["Nombre", "Contenido", "Precio", "Recurrencia"]}
             tableData={neighbors}
-            //@ts-expect-error solo se pasa la funcion
-            handler={RegisterHandler}
+            handler={registerHandler as any}
           />
         )}
       </PageContentDist.Main>

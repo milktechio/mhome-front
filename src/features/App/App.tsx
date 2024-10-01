@@ -76,7 +76,7 @@ function App() {
         rtl={false}
         pauseOnHover
       />
-      {!token && profile?.profile?.name == "" && !loading && (
+      {!token && profile?.profile?.name === "" && !loading && (
         <Login
           email={email}
           password={password}

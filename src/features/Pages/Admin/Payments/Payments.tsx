@@ -15,6 +15,7 @@ const Payments = () => {
   const [modal, setModal] = useState<string>("");
   const screen = useScreenDimentions();
 
+  const voidCallback = () => {};
   return (
     <>
       <ModalExpenses modal={modal} handler={() => setModal("")} />
@@ -44,9 +45,9 @@ const Payments = () => {
           )}
           {screen.width <= 768 && (
             <>
-              <ButtonSquare handler={() => setModal("expenses")}/>
-              <ButtonSquare handler={() => setModal("agreement")}/>
-              <ButtonSquare handler={() => setModal("payment")}/>
+              <ButtonSquare handler={() => setModal("expenses")} />
+              <ButtonSquare handler={() => setModal("agreement")} />
+              <ButtonSquare handler={() => setModal("payment")} />
               <ButtonSquare />
             </>
           )}
@@ -56,12 +57,14 @@ const Payments = () => {
             <Table
               headers={["Casa", "Estado", "Total", "Fecha", "Detail"]}
               tableData={Data}
+              handler={voidCallback as any}
             />
           )}
           {screen.width <= 768 && (
             <ListDataMobile
               headers={["Casa", "Total", "Fecha"]}
               tableData={Data}
+              handler={voidCallback as any}
             />
           )}
         </PageContentDist.Main>

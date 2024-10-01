@@ -1,5 +1,5 @@
-import Card from "@/Components/Card/Card";
-import Modal from "@/Components/Modal/Modal";
+import Card from "../../../../../Components/Card/Card";
+import Modal from "../../../../../Components/Modal/Modal";
 import React from "react";
 
 const ModalNeighborDetail = ({

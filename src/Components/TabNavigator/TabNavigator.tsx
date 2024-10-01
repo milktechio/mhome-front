@@ -13,7 +13,11 @@ const TabNavigator = ({ linksList }: { linksList: LinksListType[] }) => {
               className={styles.tabNavNavigation}
               to={link.link}
             >
-              <img src={link.iconNegative} className={styles.tabNavLinkIcon} />
+              <img
+                src={link.iconNegative}
+                className={styles.tabNavLinkIcon}
+                alt=""
+              />
               <p className={styles.tabNavName}>{link.name}</p>
             </Link>
           );

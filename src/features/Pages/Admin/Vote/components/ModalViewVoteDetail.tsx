@@ -1,54 +1,54 @@
 import Modal from "@/Components/Modal/Modal";
 import { getVoting, postVote } from "@/redux/features/vote/voteSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 const ModalViewVoteDetail = ({
   voting,
   modal,
   close,
 }: {
-  voting?: any;
+  voting?: any[];
   modal?: string;
   close?: React.MouseEventHandler<HTMLButtonElement>;
 }) => {
   const [vote, setVote] = useState<string>("");
-
   const dispatch = useAppDispatch();
-
   const votedOption = useAppSelector((state) => state.vote.dataGetVoting);
 
-  const show = voting
-    ? voting?.filter((vote) => {
-        return vote?.id === modal;
-      })
-    : [""];
+  // Usar useMemo para memorizar el resultado de la búsqueda
+  const show = useMemo(() => {
+    return voting?.find((vote) => vote?.id === modal);
+  }, [voting, modal]);
 
   const data = {
-    id: show[0]?.id,
+    id: show?.id,
     option: vote,
   };
   console.log(votedOption);
 
   useEffect(() => {
-    dispatch(getVoting(show[0]?.id));
+    if (show) {
+      dispatch(getVoting(show.id));
+    }
+    // Limpiar el estado de voto al cambiar
     if (vote) {
       setVote("");
     }
-  }, []);
+  }, [dispatch, vote, show]); // Aseguramos que show esté en las dependencias
 
   return (
     <>
-      {modal === show[0]?.id && (
+      {modal === show?.id && (
         <Modal>
-          <Modal.Header text={show[0]?.title} />
+          <Modal.Header text={show?.title} />
           <Modal.Body>
-            <Modal.DetailView image={show[0]?.image} />
-            <Modal.ShowDataText text={`Finaliza en: ${show[0]?.date_end}`} />
-            {!vote && (
+            <Modal.DetailView image={show?.image} />
+            <Modal.ShowDataText text={`Finaliza en: ${show?.date_end}`} />
+            {!vote && show?.options && (
               <Modal.Vote
                 handler={(e) => setVote(e.target.value)}
-                options={show[0]?.options}
+                options={show.options}
               />
             )}
             {vote && (

@@ -3,7 +3,9 @@ import PageContentDist from "@/layouts/PageContentDist/PageContentDist";
 import { useAppSelector } from "@/redux/hooks/hooks";
 
 const ProfileUser = () => {
-  const profile = useAppSelector((state) => state.user.dataMyProfile.profile);
+  const profile: any = useAppSelector(
+    (state) => state.user.dataMyProfile.profile
+  );
 
   return (
     <PageContentDist>

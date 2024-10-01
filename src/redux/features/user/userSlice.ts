@@ -60,7 +60,7 @@ export const getMyProfile = createAsyncThunk(
   }
 );
 
-type initialState = {
+type initialStateType = {
   successLogin: boolean;
   pendingLogin: boolean;
   rejectedLogin: boolean;
@@ -96,7 +96,7 @@ type initialState = {
   dataGetUsers: any[];
 };
 
-const initialState: initialState = {
+const initialState: initialStateType = {
   successLogin: false,
   pendingLogin: false,
   rejectedLogin: false,

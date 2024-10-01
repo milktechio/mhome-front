@@ -77,14 +77,14 @@ const Reports = () => {
           <Table
             headers={["Id", "Estado", "Fecha", "Detail"]}
             tableData={filteredReports}
-            handler={modalReportDetailHandler}
+            handler={modalReportDetailHandler as any}
           />
         )}
         {screen.width <= 768 && (
           <ListDataMobile
             headers={["Id", "Estado", "Fecha"]}
             tableData={filteredReports}
-            handler={modalReportDetailHandler}
+            handler={modalReportDetailHandler as any}
           />
         )}
       </PageContentDist.Main>

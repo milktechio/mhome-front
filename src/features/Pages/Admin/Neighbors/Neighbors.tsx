@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { useScreenDimentions } from "@/utils/hooks/screenDimentions";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks/hooks";
-import { getUsers } from "@/redux/features/user/userSlice";
-import InputSearch from "@/Components/Inputs/InputSearch/InputSearch";
-import Table from "@/Components/Table/Table";
+import { getUsers } from "../../../../redux/features/user/userSlice";
+import InputSearch from "../../../../Components/Inputs/InputSearch/InputSearch";
+import Table from "../../../../Components/Table/Table";
 import PageContentDist from "@/layouts/PageContentDist/PageContentDist";
-import ListDataMobile from "@/Components/ListData/ListDataMobile";
-import ButtonSquare from "@/Components/Buttons/ButtonSquare/ButtonSquare";
-import ButtonPrimary from "@/Components/Buttons/ButtonPrimary/ButtonPrimary";
+import ListDataMobile from "../../../../Components/ListData/ListDataMobile";
+import ButtonSquare from "../../../../Components/Buttons/ButtonSquare/ButtonSquare";
+import ButtonPrimary from "../../../../Components/Buttons/ButtonPrimary/ButtonPrimary";
 import ModalNeighborRegister from "./components/ModalNeighborRegister";
 import ModalNeighborDetail from "./components/ModalNeighborDetail";
 
@@ -94,14 +94,14 @@ const Neighbors = () => {
               "Detalle",
             ]}
             tableData={neighbors}
-            handler={modalNeighborDetailHandler}
+            handler={modalNeighborDetailHandler as any}
           />
         )}
         {screen.width <= 768 && (
           <ListDataMobile
             headers={["Casa", "Nombre", "email", "Membresia"]}
             tableData={neighbors}
-            handler={modalNeighborDetailHandler}
+            handler={modalNeighborDetailHandler as any}
           />
         )}
       </PageContentDist.Main>

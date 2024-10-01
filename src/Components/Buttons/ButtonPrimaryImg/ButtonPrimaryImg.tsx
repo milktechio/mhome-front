@@ -3,9 +3,12 @@ import styles from "./ButtonPrimaryImg.module.css";
 
 const ButtonPrimaryImg = ({ text, img, handler }: ButtonPrimaryType) => {
   return (
-    <button className={"btn btn-light "+styles.ButtonPrimary} onClick={handler}>
+    <button
+      className={"btn btn-light " + styles.ButtonPrimary}
+      onClick={handler}
+    >
       {text}
-      {img && <img src={img} />}
+      {img && <img src={img} alt="" />}
     </button>
   );
 };

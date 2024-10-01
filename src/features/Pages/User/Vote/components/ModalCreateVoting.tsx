@@ -99,7 +99,7 @@ const ModalCreateVoting = ({
           <Modal.Footer
             text="Registrar"
             handler={() => {
-              dispatch(createVoting(data));
+              dispatch(createVoting(data as any));
             }}
             close={close}
           />

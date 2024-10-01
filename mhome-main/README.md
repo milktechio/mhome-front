@@ -1,2 +1,0 @@
-# mhome
-Manage my home

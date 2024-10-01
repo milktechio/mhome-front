@@ -37,7 +37,7 @@ export const updateReportStatus = createAsyncThunk(
   }
 );
 
-type initialState = {
+type initialStateType = {
   successPostReport: boolean;
   pendingPostReport: boolean;
   rejectedPostReport: boolean;
@@ -52,7 +52,7 @@ type initialState = {
   rejectedUpdateStatusReports: boolean;
 };
 
-const initialState: initialState = {
+const initialState: initialStateType = {
   successPostReport: false,
   pendingPostReport: false,
   rejectedPostReport: false,

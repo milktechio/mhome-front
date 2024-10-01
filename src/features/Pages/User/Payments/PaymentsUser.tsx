@@ -5,6 +5,8 @@ import { useScreenDimentions } from "@/utils/hooks/screenDimentions";
 
 const PaymentsUser = () => {
   const screen = useScreenDimentions();
+  const voidCallback = () => {};
+
   return (
     <PageContentDist>
       <PageContentDist.Header>
@@ -13,6 +15,7 @@ const PaymentsUser = () => {
       <PageContentDist.Main>
         {screen.width > 768 && (
           <Table
+            handler={voidCallback as any}
             headers={["Pago", "Concepto", "Monto", "Detalle"]}
             tableData={[
               { Pago: 1, Concepto: "algo", Monto: 2342 },
@@ -29,6 +32,7 @@ const PaymentsUser = () => {
         )}
         {screen.width <= 768 && (
           <ListDataMobile
+            handler={voidCallback as any}
             headers={["Pago", "Concepto", "Monto"]}
             tableData={[
               { Pago: 1, Concepto: "algo", Monto: 2342 },
