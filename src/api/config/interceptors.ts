@@ -7,8 +7,8 @@ class Interceptors {
     console.log(error.data);
     switch (error.status) {
       case 422:
-        for (const key in error.data.data.errors) {
-          error.data.data.errors[key].map((message: any) => {
+        for (const key in error.data.errors) {
+          error.data.errors[key].map((message: any) => {
             toast.error(message, { theme: "dark" });
             return message;
           });

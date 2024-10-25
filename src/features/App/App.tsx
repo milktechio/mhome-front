@@ -4,7 +4,7 @@ import {
 } from "@/utils/data/SideBar.utils";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
-import { getMyProfile, loginUser } from "../../redux/features/user/userSlice";
+import { getMyProfile } from "../../redux/features/user/userSlice";
 import { useEffect, useState } from "react";
 import { NavLinks } from "@/utils/types/navLinks.types";
 import Session from "../Session/Session";
@@ -13,6 +13,25 @@ import "./App.css";
 import { jwtDecode } from "jwt-decode";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "@/api/config/axios";
+
+  const loginUser = async (userData: { email: string; password: string }) => {
+    const formLogin = new FormData();
+
+    formLogin.append("email", userData.email);
+    formLogin.append("password", userData.password);
+
+    try{
+      const loginAccess = await axios.post(`auth/login`, formLogin);
+
+      const token = loginAccess.data.data;
+      localStorage.setItem("token", token);
+      return token;
+    } catch(e){
+      console.log(e)
+    } 
+  }
+
 
 function App() {
   const [email, setEmail] = useState<string>("");
@@ -26,9 +45,14 @@ function App() {
   const profileSuccess = useAppSelector((state) => state.user.successMyProfile);
   const [loading, setLoading] = useState(true);
 
+
+
+
   const getTokenHandler = () => {
     const data = { email: email, password: password };
-    dispatch(loginUser(data));
+    loginUser(data).then((res)=>{
+      res&&window.location.reload()
+    })
   };
 
   useEffect(() => {
